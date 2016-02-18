@@ -1,12 +1,13 @@
-<html>
+<html ng-app="vrApp">
+
 	<head>
-	<meta name="description" content="Kutztown Syllabus Manager">
+	<meta name="description" content="Google VR Creator">
 	<meta name="keywords" content="Google VR, Virtual Reality,VR,vr,google cardboard,VR creator,create vr">
 	    <meta name="author" content="Ankit Gyawali">
 	    <meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Virtual Reality Creator</title>
+		<title>{{vrAppTitle}}</title>
 		<style>
 		/*  CSS to stretch canvas to fit whole html
 		   Debug: Change when scaffolding with angularjs;
@@ -21,7 +22,7 @@
 
 
 
-    <div id="maincanvas"></div>
+    <div id="maincanvas" style="width:50%;height:50%"></div>
 
 
 
@@ -52,8 +53,8 @@
 
       scene = new THREE.Scene();
 
-      camera = new THREE.PerspectiveCamera(90, 1, 0.001, 700); //Make this dynamic. Debug: Scaffold with angularjs
-      camera.position.set(0, 10, 0);
+      camera = new THREE.PerspectiveCamera(120, 1, 0.001, 700); //Make this dynamic. Debug: Scaffold with angularjs
+      camera.position.set(0, 10, 0); //Second position sets height of camera Debug: Dynamic
       scene.add(camera);
 
       controls = new THREE.OrbitControls(camera, element); //Attach camera to mouse/swipe
@@ -85,11 +86,13 @@
 	var light = new THREE.AmbientLight( 0xE6E3E3 ); // soft white light
 	scene.add( light );
 
-
+	
+      //Set Color
+      renderer.setClearColorHex( 0x87CEEB, 0.5 );
 
      // Debug: This is dynamic
       var texture = THREE.ImageUtils.loadTexture(
-        'textures/ground/stone.png'
+        'textures/ground/brick.png'
       );
 
       //Texture is repeated from 4x times. (50/50 horizonatal vertical)
@@ -166,7 +169,8 @@
 
 
 		  <!-- Angular Material requires Angular.js Libraries -->
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
