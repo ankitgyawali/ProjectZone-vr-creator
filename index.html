@@ -1,7 +1,16 @@
 <html>
 	<head>
+	<meta name="description" content="Kutztown Syllabus Manager">
+	<meta name="keywords" content="Google VR, Virtual Reality,VR,vr,google cardboard,VR creator,create vr">
+	    <meta name="author" content="Ankit Gyawali">
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Virtual Reality Creator</title>
 		<style>
+		/*  CSS to stretch canvas to fit whole html
+		   Debug: Change when scaffolding with angularjs;
+		*/ 
 			body { margin: 0; }
 			canvas { width: 100%; height: 100% }
 		</style>
@@ -12,42 +21,42 @@
 
 
 
-    <div id="example"></div>
+    <div id="maincanvas"></div>
 
 
 
-		<script src="js/three.js"></script>
-		<script src="js/StereoEffect.js"></script>
-		<script src="js/DeviceOrientationControls.js"></script>
-		<script src="js/OrbitControls.js"></script>
+		<script src="js/three.js"></script><!-- Latest version of three js -->
+		<script src="js/StereoEffect.js"></script> <!-- Library to split images into two for 3d effect  -->
+		<script src="js/DeviceOrientationControls.js"></script><!-- Get control with cell phone device orientation -->
+		<script src="js/OrbitControls.js"></script><!-- Get control with mouse for users from pc -->
 		
 	
 		
 		<script>
-    var camera, scene, renderer;
+    var camera, scene, renderer; //Initialize vars to create world
     var effect, controls;
     var element, container;
 
-    var clock = new THREE.Clock();
+    var clock = new THREE.Clock(); //Debug: Read up on this
 
     init();
     animate();
 
     function init() {
-      renderer = new THREE.WebGLRenderer();
+      renderer = new THREE.WebGLRenderer(); //Use webGL
       element = renderer.domElement;
-      container = document.getElementById('example');
+      container = document.getElementById('maincanvas');
       container.appendChild(element);
 
-      effect = new THREE.StereoEffect(renderer);
+      effect = new THREE.StereoEffect(renderer); //Stereo effect object created from stereoeffect.js library
 
       scene = new THREE.Scene();
 
-      camera = new THREE.PerspectiveCamera(90, 1, 0.001, 700);
+      camera = new THREE.PerspectiveCamera(90, 1, 0.001, 700); //Make this dynamic. Debug: Scaffold with angularjs
       camera.position.set(0, 10, 0);
       scene.add(camera);
 
-      controls = new THREE.OrbitControls(camera, element);
+      controls = new THREE.OrbitControls(camera, element); //Attach camera to mouse/swipe
       controls.rotateUp(Math.PI / 4);
       controls.target.set(
         camera.position.x + 0.1,
@@ -73,17 +82,24 @@
       window.addEventListener('deviceorientation', setOrientationControls, true);
 
 
-      var light = new THREE.HemisphereLight(0x777777, 0x000000, 0.6);
-      scene.add(light);
+	var light = new THREE.AmbientLight( 0xE6E3E3 ); // soft white light
+	scene.add( light );
 
+
+
+     // Debug: This is dynamic
       var texture = THREE.ImageUtils.loadTexture(
         'textures/ground/stone.png'
       );
+
+      //Texture is repeated from 4x times. (50/50 horizonatal vertical)
+      //Can be changed to 1x by 100,100
       texture.wrapS = THREE.RepeatWrapping;
       texture.wrapT = THREE.RepeatWrapping;
       texture.repeat = new THREE.Vector2(50, 50);
       texture.anisotropy = renderer.getMaxAnisotropy();
 
+      //Instantiate material object with mapped to texture
       var material = new THREE.MeshPhongMaterial({
         color: 0xffffff,
         specular: 0xffffff,
@@ -92,6 +108,8 @@
         map: texture
       });
 
+      //Plate Geometry. Could be changed to provide user with more option
+      //Debug: Could be hooked up with angular?
       var geometry = new THREE.PlaneGeometry(1000, 1000);
 
       var mesh = new THREE.Mesh(geometry, material);
@@ -132,6 +150,7 @@
       render(clock.getDelta());
     }
 
+    //For cell phone
     function fullscreen() {
       if (container.requestFullscreen) {
         container.requestFullscreen();
@@ -153,7 +172,7 @@
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
   <!-- Angular Material Library -->
   <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
-<script src="main.js"></script>
+<script src="main.js"></script><!-- Main service and factory for angularjs -->
 
 	</body>
 </html>
