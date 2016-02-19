@@ -8,12 +8,12 @@
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>{{vrAppTitle}}</title>
-	   <style>
-    /*  CSS to stretch canvas to fit whole html
-    */ 
-      body { margin: 0; }
-      canvas { width: 100%; height: 100% }
-    </style>
+		<style>
+		/*  CSS to stretch canvas to fit whole html
+		*/ 
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+		</style>
 
 
 	</head>
@@ -21,14 +21,12 @@
 
 
 
-    <div id="maincanvas" style="border:1px solid black;margin:30px 30px 30px 30px;width:50%;height:50%"></div>
+    <div id="maincanvas" style="width:100%;height:100%"></div>
 
 
 
 		<script src="js/three.js"></script><!-- Latest version of three js -->
-	<!-- 	 **We wont be neeeding stereo effect for main page
-  <script src="js/StereoEffect.js"></script> Library to split images into two for 3d effect  -
-  ->
+		<script src="js/StereoEffect.js"></script> <!-- Library to split images into two for 3d effect  -->
 		<script src="js/DeviceOrientationControls.js"></script><!-- Get control with cell phone device orientation -->
 		<script src="js/OrbitControls.js"></script><!-- Get control with mouse for users from pc -->
 		
@@ -45,25 +43,19 @@
     animate();
 
     function init() {
-
       scene = new THREE.Scene();
-
-      camera = new THREE.PerspectiveCamera(120, 1, 0.001, 700); //Make this dynamic. Debug: Scaffold with angularjs
-      camera.position.set(0, 10, 0); //Second position sets height of camera Debug: Dynamic
-      scene.add(camera);
-
       renderer = new THREE.WebGLRenderer(); //Use webGL
-
-
       element = renderer.domElement;
       container = document.getElementById('maincanvas');
       container.appendChild(element);
 
-
-
-      // effect = new THREE.StereoEffect(renderer); //Stereo effect object created from stereoeffect.js library
+      effect = new THREE.StereoEffect(renderer); //Stereo effect object created from stereoeffect.js library
 
       
+
+      camera = new THREE.PerspectiveCamera(120, 1, 0.001, 700); //Make this dynamic. Debug: Scaffold with angularjs
+      camera.position.set(0, 10, 0); //Second position sets height of camera Debug: Dynamic
+      scene.add(camera);
 
       controls = new THREE.OrbitControls(camera, element); //Attach camera to mouse/swipe
       controls.rotateUp(Math.PI / 4);
@@ -139,7 +131,7 @@
       camera.updateProjectionMatrix();
 
       renderer.setSize(width, height);
-      // effect.setSize(width, height);
+      effect.setSize(width, height);
     }
 
     function update(dt) {
@@ -151,7 +143,7 @@
     }
 
     function render(dt) {
-     renderer.render(scene, camera);
+      effect.render(scene, camera);
     }
 
     function animate(t) {

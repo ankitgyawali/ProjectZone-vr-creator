@@ -5,14 +5,14 @@
 //Define angular app and its dependencies
 var vrApp = angular.module('vrApp', ['ngMaterial','ngRoute']);
 
-// //Route configuration to provide different level of access controls to different user group
-// vrApp.config(function($routeProvider) {
-//     $routeProvider
-//         .when('/', {
-//             templateUrl: 'index.html',
-//             controller: 'rootController'
-//         })
-// });
+//Route configuration to provide different level of access controls to different user group
+vrApp.config(function($routeProvider) {
+    $routeProvider
+        .when('/', {
+            templateUrl: 'indexx.html',
+            controller: 'rootController'
+        })
+});
 
 
 //Contains global variables used for checksheet manager
