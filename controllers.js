@@ -5,5 +5,6 @@ angular.module('vrApp').controller('rootController', ['$scope', '$location',
  
 console.log('TEST FOR ROOT CONTROLLER ');
 
+$scope.xx = "asas"
     }
 ]);

@@ -12,10 +12,7 @@ vrApp.config(function($routeProvider) {
             templateUrl: 'partials/main.html',
             controller: 'rootController'
         })
-            .when('/index.html', {
-            templateUrl: 'partials/main.html',
-            controller: 'rootController'
-        })
+    
 });
 
 
