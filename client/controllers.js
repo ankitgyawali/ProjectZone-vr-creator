@@ -1,12 +1,9 @@
 //Main login controller that handles login of three different user types
-angular.module('vrApp').controller('rootController', ['$scope', '$location',
-    function($scope, $location) {
+angular.module('vrApp').controller('rootController', ['$scope', '$location','CanvasService',
+    function($scope, $location,CanvasService) {
 
-
-console.log('TEST FOR ROOT CONTROLLER ');
-
-$scope.xx = "asas"
-
+CanvasService.test();
+CanvasService.canvas();
 
 
     }

@@ -24,6 +24,6 @@ vrApp.config(function($routeProvider) {
 //Authentication. Checks if user is logged in on every route change
 vrApp.run(['$rootScope',
     function($rootScope) {
- $rootScope.vrAppTitle = "Google Virtual Reality Creator"
+ $rootScope.vrAppTitle = "Google Virtual Reality Creator"; 
     	    }
 ]);
