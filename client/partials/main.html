@@ -88,52 +88,106 @@ Help
 
 
 
-
   </md-content>
 </div>
 
 
 
-
-    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" style="background: red">
-      <md-toolbar class="md-theme-pink">
-        <h1 class="md-toolbar-tools">World Options</h1>
-  
-      </md-toolbar>
-
-      <md-content layout-padding>
-
-        <h4>Camera</h4>
-
-        <h4>Light</h4>
-
-        <h4>Animation</h4>
-
- 	<h4>Rendering</h4>
-
-
-        <form>
-          <md-input-container>
-            <label for="testInput">Transfer Object to (x,y,z):</label>
-            <input type="text" id="testInput"
-                   ng-model="data" md-autofocus>
-          </md-input-container>
-        </form>
-        <md-button ng-click="close()" class="md-primary">
-          Close
-        </md-button>
-      </md-content>
-
-
-
-
-    </md-sidenav>
+<div ng-cloak>
+  <md-content>
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="World">
+        <md-content class="md-padding">
+          <h1 class="md-display-1">World Options</h1>
+          <p>
 
 <br><br>
 File Options:
 <button ng-click="changeGround()"> Change ground </button>
 <button ng-click="changeSky()"> Change sky </button>
 <a href="preview.html" target="_blank"><button> Preview World </button></a>
+
+
+
+          </p>
+        </md-content>
+      </md-tab>
+
+      <md-tab label="Rendering">
+        <md-content class="md-padding">
+          <h1 class="md-display-1">Rendering Options</h1>
+          <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+        </md-content>
+      </md-tab>
+
+
+      <md-tab label="Objects">
+        <md-content class="md-padding">
+          <h3 >Modify Objects</h1>
+          <p>
+
+
+     <div ng-cloak>
+  <md-content>
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="Choose Object Properties">
+        <md-content class="md-padding">
+          <h4>List of Objects</h4>
+          <p>
+
+<ul>
+	<li>Foo</li>
+	<li>Bar</li>
+	<li>Baz</li>
+</ul>
+
+
+
+          </p>
+        </md-content>
+      </md-tab>
+      <md-tab label="Animate Object Properties">
+        <md-content class="md-padding">
+               <h4>List of Objects</h4>
+          <p>
+<ul>
+	<li>Foo</li>
+	<li>Bar</li>
+	<li>Baz</li>
+</ul>
+
+
+
+
+
+          </p>
+
+        </md-content>
+      </md-tab>
+
+
+
+    </md-tabs>
+  </md-content>
+</div>
+
+
+
+          </p>
+
+
+
+        </md-content>
+      </md-tab>
+
+
+    </md-tabs>
+  </md-content>
+</div>
+
+
+
+
 
 
 
