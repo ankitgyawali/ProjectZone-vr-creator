@@ -13,3 +13,12 @@ upload.html -> lets user upload json of the world created and load from that jso
 
 edit.html -> Let user modify that json object before going to preview
 
+
+json structure to be stored in service for preview and download 
+
+->
+ 
+ canvasservice -> 
+ 		init to three js scene
+ 		 hold default stored in json array  
+

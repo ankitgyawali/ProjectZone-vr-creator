@@ -1,1 +1,69 @@
-axxx
+<div layout="column" layout-fill>
+
+
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+
+
+
+
+          <md-menu md-position-mode="target-right target" >
+ <!-- Trigger element is a md-button with an icon -->
+ <md-button ng-click="$mdOpenMenu($event)" aria-label="Open sample menu">
+  File
+ </md-button>
+ <md-menu-content>
+   <md-menu-item><md-button ng-click="doSomething()">Create a new world</md-button></md-menu-item>
+   <md-menu-item><md-button ng-click="doSomething()">Export current world</md-button></md-menu-item>
+   <md-menu-item><md-button ng-click="doSomething()">Preview current world</md-button></md-menu-item>
+ </md-menu-content>
+</md-menu>
+
+
+
+          <md-menu md-position-mode="target-right target" >
+ <!-- Trigger element is a md-button with an icon -->
+ <md-button ng-click="$mdOpenMenu($event)" aria-label="Open sample menu">
+  Edit
+ </md-button>
+ <md-menu-content>
+   <md-menu-item><md-button ng-click="doSomething()">Edit Background</md-button></md-menu-item>
+   <md-menu-item><md-button ng-click="doSomething()">Edit Sky</md-button></md-menu-item>
+   <md-menu-item><md-button ng-click="doSomething()">Add Objects</md-button></md-menu-item>
+ </md-menu-content>
+</md-menu>
+
+
+ <md-button aria-label="Open sample menu">
+  Download as JSON
+ </md-button>
+
+      <!-- fill up the space between left and right area -->
+      <span flex></span>
+
+
+
+      <span><a href="https://github.com/ankitgyawali/google-vr-creator" target="_blank">Google VR Creator</a></span>
+
+
+
+
+    </div>
+  </md-toolbar>
+
+  <md-content flex>
+    <!-- Content could be added here instead of after two lines...  -->
+  </md-content>
+</div>
+
+
+
+File Options:
+<button ng-click="changeGround()"> Change ground </button>
+<button ng-click="changeSky()"> Change sky </button>
+<a href="preview.html" target="_blank"><button> Preview World </button></a>
+
+
+
+
+

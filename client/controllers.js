@@ -2,27 +2,16 @@
 angular.module('vrApp').controller('rootController', ['$scope', '$location','CanvasService',
     function($scope, $location,CanvasService) {
 
+$scope.changeSky = function(){
+  
+        $scope.renderer.setClearColor( 0x82E851, 0.5 ); //Sky color
+}
 
 
+$scope.changeGround = function (){
+$scope.background = 'textures/ground/mars-ground.png';
 
 
-    }
-]);
-
-
-
-//Main login controller that handles login of three different user types
-angular.module('vrApp').controller('mainController', ['$scope', '$location','CanvasService',
-    function($scope, $location,CanvasService) {
-
-
-CanvasService.init();
-
-
-$scope.oi = function (){
-$scope.background = 'textures/ground/stone.png';
-
-console.log("change");
 
   $scope.scene.remove($scope.mesh);
  // Debug: This is dynamic
@@ -54,6 +43,20 @@ console.log("change");
 
 }
 
+
+
+
+    }
+]);
+
+
+
+//Main login controller that handles login of three different user types
+angular.module('vrApp').controller('mainController', ['$scope', '$location','CanvasService',
+    function($scope, $location,CanvasService) {
+
+
+
  $scope.background = 'textures/ground/grassy.png';
     //   var camera, scene, renderer, controls, element, container;
     $scope.scene = new THREE.Scene();
@@ -69,7 +72,7 @@ console.log("change");
       $scope.container = document.getElementById('maincanvas');
       $scope.container.appendChild($scope.element);
 
-       var clock = new THREE.Clock(); //Debug: Read up on this
+       $scope.clock = new THREE.Clock(); //Debug: Read up on this
 
    
 
@@ -112,12 +115,12 @@ console.log("change");
       window.addEventListener('deviceorientation', setOrientationControls, true);
 
 
-	var light = new THREE.AmbientLight( 0xE6E3E3 ); // soft white light
-	$scope.scene.add( light );
+	$scope.light = new THREE.AmbientLight( 0xE6E3E3 ); // soft white light
+	$scope.scene.add($scope.light );
 
 	
       //Set Color
-      $scope.renderer.setClearColor( 0x87CEEB, 0.5 );
+      $scope.renderer.setClearColor( 0x87CEEB, 0.5 ); //Sky color
      
      // Debug: This is dynamic
       $scope.texture = THREE.ImageUtils.loadTexture($scope.background);
@@ -177,8 +180,8 @@ console.log("change");
     function animate(t) {
       requestAnimationFrame(animate);
 
-      update(clock.getDelta());
-      render(clock.getDelta());
+      update($scope.clock.getDelta());
+      render($scope.clock.getDelta());
     }
 
     //For cell phone
