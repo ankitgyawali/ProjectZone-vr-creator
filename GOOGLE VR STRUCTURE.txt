@@ -13,3 +13,16 @@ upload.html -> lets user upload json of the world created and load from that jso
 
 edit.html -> Let user modify that json object before going to preview
 
+index->
+ground
+sky 
+
+light
+camera
+
+object-> rotate,translate,transform
+	  look for ng-hammer feature
+	  loading object type how?
+	  file upload/download in angularjs
+	  geometry-mesh-scene interaction
+
