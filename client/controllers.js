@@ -2,9 +2,6 @@
 angular.module('vrApp').controller('rootController', ['$scope', '$location','CanvasService',
     function($scope, $location,CanvasService) {
 
-CanvasService.test();
-CanvasService.canvas();
-
 
 
 
@@ -19,22 +16,58 @@ angular.module('vrApp').controller('mainController', ['$scope', '$location','Can
     function($scope, $location,CanvasService) {
 
 
-
-   var camera, scene, renderer; //Initialize vars to create world
-    var controls;
-    var element, container;
-    scene = new THREE.Scene();
-
-    camera = new THREE.PerspectiveCamera(120, 1, 0.001, 700); //Make this dynamic. Debug: Scaffold with angularjs
-     camera.position.set(0, 10, 0); //Second position sets height of camera Debug: Dynamic
-     scene.add(camera);
-
-    renderer = new THREE.WebGLRenderer(); //Use webGL
+CanvasService.init();
 
 
-      element = renderer.domElement;
-      container = document.getElementById('maincanvas');
-      container.appendChild(element);
+$scope.oi = function (){
+$scope.background = 'textures/ground/stone.png';
+
+console.log("change");
+
+  $scope.scene.remove($scope.mesh);
+ // Debug: This is dynamic
+      $scope.texture = THREE.ImageUtils.loadTexture($scope.background);
+
+      //Texture is repeated from 4x times. (50/50 horizonatal vertical)
+      //Can be changed to 1x by 100,100
+      $scope.texture.wrapS = THREE.RepeatWrapping;
+      $scope.texture.wrapT = THREE.RepeatWrapping;
+      $scope.texture.repeat = new THREE.Vector2(50, 50);
+      $scope.texture.anisotropy = $scope.renderer.getMaxAnisotropy();
+
+      //Instantiate material object with mapped to texture
+      $scope.material = new THREE.MeshPhongMaterial({
+        color: 0xffffff,
+        specular: 0xffffff,
+        shininess: 20,
+        shading: THREE.FlatShading,
+        map: $scope.texture
+      });
+
+      //Plate Geometry. Could be changed to provide user with more option
+      //Debug: Could be hooked up with angular?
+      $scope.geometry = new THREE.PlaneGeometry(1000, 1000);
+
+      $scope.mesh = new THREE.Mesh($scope.geometry, $scope.material);
+      $scope.mesh.rotation.x = -Math.PI / 2;
+      $scope.scene.add($scope.mesh);
+
+}
+
+ $scope.background = 'textures/ground/grassy.png';
+    //   var camera, scene, renderer, controls, element, container;
+    $scope.scene = new THREE.Scene();
+
+    $scope.camera = new THREE.PerspectiveCamera(120, 1, 0.001, 700); //Make this dynamic. Debug: Scaffold with angularjs
+     $scope.camera.position.set(0, 10, 0); //Second position sets height of camera Debug: Dynamic
+     $scope.scene.add($scope.camera);
+
+    $scope.renderer = new THREE.WebGLRenderer(); //Use webGL
+
+
+      $scope.element = $scope.renderer.domElement;
+      $scope.container = document.getElementById('maincanvas');
+      $scope.container.appendChild($scope.element);
 
        var clock = new THREE.Clock(); //Debug: Read up on this
 
@@ -53,26 +86,26 @@ angular.module('vrApp').controller('mainController', ['$scope', '$location','Can
 
       
 
-      controls = new THREE.OrbitControls(camera, element); //Attach camera to mouse/swipe
-      controls.rotateUp(Math.PI / 4);
-      controls.target.set(
-        camera.position.x + 0.1,
-        camera.position.y,
-        camera.position.z
+      $scope.controls = new THREE.OrbitControls($scope.camera,$scope.element); //Attach camera to mouse/swipe
+      $scope.controls.rotateUp(Math.PI / 4);
+      $scope.controls.target.set(
+        $scope.camera.position.x + 0.1,
+        $scope.camera.position.y,
+        $scope.camera.position.z
       );
-      controls.noZoom = true;
-      controls.noPan = true;
+      $scope.controls.noZoom = true;
+      $scope.controls.noPan = true;
 
       function setOrientationControls(e) {
         if (!e.alpha) {
           return;
         }
 
-        controls = new THREE.DeviceOrientationControls(camera, true);
-        controls.connect();
-        controls.update();
+        $scope.controls = new THREE.DeviceOrientationControls($scope.camera, true);
+        $scope.controls.connect();
+        $scope.controls.update();
 
-        element.addEventListener('click', fullscreen, false);
+        $scope.element.addEventListener('click', fullscreen, false);
 
         window.removeEventListener('deviceorientation', setOrientationControls, true);
       }
@@ -80,64 +113,65 @@ angular.module('vrApp').controller('mainController', ['$scope', '$location','Can
 
 
 	var light = new THREE.AmbientLight( 0xE6E3E3 ); // soft white light
-	scene.add( light );
+	$scope.scene.add( light );
 
 	
       //Set Color
-      renderer.setClearColor( 0x87CEEB, 0.5 );
-      $scope.background = 'textures/ground/grassy.png';
+      $scope.renderer.setClearColor( 0x87CEEB, 0.5 );
+     
      // Debug: This is dynamic
-      var texture = THREE.ImageUtils.loadTexture($scope.background);
+      $scope.texture = THREE.ImageUtils.loadTexture($scope.background);
 
       //Texture is repeated from 4x times. (50/50 horizonatal vertical)
       //Can be changed to 1x by 100,100
-      texture.wrapS = THREE.RepeatWrapping;
-      texture.wrapT = THREE.RepeatWrapping;
-      texture.repeat = new THREE.Vector2(50, 50);
-      texture.anisotropy = renderer.getMaxAnisotropy();
+      $scope.texture.wrapS = THREE.RepeatWrapping;
+      $scope.texture.wrapT = THREE.RepeatWrapping;
+      $scope.texture.repeat = new THREE.Vector2(50, 50);
+      $scope.texture.anisotropy = $scope.renderer.getMaxAnisotropy();
 
       //Instantiate material object with mapped to texture
-      var material = new THREE.MeshPhongMaterial({
+      $scope.material = new THREE.MeshPhongMaterial({
         color: 0xffffff,
         specular: 0xffffff,
         shininess: 20,
         shading: THREE.FlatShading,
-        map: texture
+        map: $scope.texture
       });
 
       //Plate Geometry. Could be changed to provide user with more option
       //Debug: Could be hooked up with angular?
-      var geometry = new THREE.PlaneGeometry(1000, 1000);
+      $scope.geometry = new THREE.PlaneGeometry(1000, 1000);
+      $scope.geometry.dynamic = true;
 
-      var mesh = new THREE.Mesh(geometry, material);
-      mesh.rotation.x = -Math.PI / 2;
-      scene.add(mesh);
+      $scope.mesh = new THREE.Mesh($scope.geometry, $scope.material);
+      $scope.mesh.rotation.x = -Math.PI / 2;
+      $scope.scene.add($scope.mesh);
 
       window.addEventListener('resize', resize, false);
       setTimeout(resize, 1);
     }
 
     function resize() {
-      var width = container.offsetWidth;
-      var height = container.offsetHeight;
+      var width = $scope.container.offsetWidth;
+      var height = $scope.container.offsetHeight;
 
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
+      $scope.camera.aspect = width / height;
+      $scope.camera.updateProjectionMatrix();
 
-      renderer.setSize(width, height);
+      $scope.renderer.setSize(width, height);
       // effect.setSize(width, height);
     }
 
     function update(dt) {
       resize();
 
-      camera.updateProjectionMatrix();
+      $scope.camera.updateProjectionMatrix();
 
-      controls.update(dt);
+      $scope.controls.update(dt);
     }
 
     function render(dt) {
-     renderer.render(scene, camera);
+     $scope.renderer.render($scope.scene, $scope.camera);
     }
 
     function animate(t) {
@@ -149,24 +183,18 @@ angular.module('vrApp').controller('mainController', ['$scope', '$location','Can
 
     //For cell phone
     function fullscreen() {
-      if (container.requestFullscreen) {
-        container.requestFullscreen();
-      } else if (container.msRequestFullscreen) {
-        container.msRequestFullscreen();
-      } else if (container.mozRequestFullScreen) {
-        container.mozRequestFullScreen();
-      } else if (container.webkitRequestFullscreen) {
-        container.webkitRequestFullscreen();
+      if ($scope.container.requestFullscreen) {
+        $scope.container.requestFullscreen();
+      } else if ($scope.container.msRequestFullscreen) {
+        $scope.container.msRequestFullscreen();
+      } else if ($scope.container.mozRequestFullScreen) {
+        $scope.container.mozRequestFullScreen();
+      } else if ($scope.container.webkitRequestFullscreen) {
+        $scope.container.webkitRequestFullscreen();
       }
     }
 
 
-$scope.oi = function (){
-$scope.background = 'textures/ground/grassy.png';
-$scope.scenexx = new THREE.Scene();
-console.log("change");
-console.log(JSON.stringify($scope.scenexx));
-}
 
    }
    ]);
