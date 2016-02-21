@@ -10,12 +10,28 @@
           <md-menu md-position-mode="target-right target" >
  <!-- Trigger element is a md-button with an icon -->
  <md-button ng-click="$mdOpenMenu($event)" aria-label="Open sample menu">
-  File
+<i class="fa fa-file-text"></i> File
  </md-button>
  <md-menu-content>
-   <md-menu-item><md-button ng-click="doSomething()">Create a new world</md-button></md-menu-item>
-   <md-menu-item><md-button ng-click="doSomething()">Export current world</md-button></md-menu-item>
-   <md-menu-item><md-button ng-click="doSomething()">Preview current world</md-button></md-menu-item>
+   <md-menu-item><md-button ng-click="doSomething()">&nbsp;&nbsp;<i class="fa fa-file"></i>
+ Create New World</md-button></md-menu-item>
+
+
+   <md-menu-item>
+
+   <md-button ng-click="doSomething()"> &nbsp; <i class="fa fa-paper-plane"></i>
+Export current world</md-button>
+
+</md-menu-item>
+
+
+   <md-menu-item>
+
+<a href="preview.html" target="_blank" style="color:inherit;text-decoration: none;">
+   <md-button><i class="fa fa-search"></i> Preview current world</md-button></a>
+
+
+</md-menu-item>
  </md-menu-content>
 </md-menu>
 
@@ -24,19 +40,31 @@
           <md-menu md-position-mode="target-right target" >
  <!-- Trigger element is a md-button with an icon -->
  <md-button ng-click="$mdOpenMenu($event)" aria-label="Open sample menu">
-  Edit
+  <i class="fa fa-pencil-square"></i>
+ Edit
  </md-button>
  <md-menu-content>
-   <md-menu-item><md-button ng-click="doSomething()">Edit Background</md-button></md-menu-item>
-   <md-menu-item><md-button ng-click="doSomething()">Edit Sky</md-button></md-menu-item>
-   <md-menu-item><md-button ng-click="doSomething()">Add Objects</md-button></md-menu-item>
+   <md-menu-item><md-button ng-click="doSomething()"><i class="fa fa-pencil-square-o"></i>
+Edit Ground</md-button></md-menu-item>
+   <md-menu-item><md-button ng-click="doSomething()"><i class="fa fa-pencil-square-o"></i>
+Edit Sky</md-button></md-menu-item>
+   <md-menu-item><md-button ng-click="doSomething()"><i class="fa fa-plus"></i>
+Add Object</md-button></md-menu-item>
+      <md-menu-item><md-button ng-click="doSomething()"><i class="fa fa-pencil-square-o"></i> Modify Object</md-button></md-menu-item>
  </md-menu-content>
 </md-menu>
 
 
  <md-button aria-label="Open sample menu">
-  Download as JSON
+  <i class="fa fa-download"></i>
+Download as JSON
  </md-button>
+
+  <md-button aria-label="Open sample menu">
+  <i class="fa fa-share-alt"></i>
+Share
+ </md-button>
+
 
       <!-- fill up the space between left and right area -->
       <span flex></span>
@@ -53,11 +81,51 @@
 
   <md-content flex>
     <!-- Content could be added here instead of after two lines...  -->
+
+
+
+
   </md-content>
 </div>
 
 
 
+
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" style="background: red">
+      <md-toolbar class="md-theme-pink">
+        <h1 class="md-toolbar-tools">World Options</h1>
+  
+      </md-toolbar>
+
+      <md-content layout-padding>
+
+        <h4>Camera</h4>
+
+        <h4>Light</h4>
+
+        <h4>Animation</h4>
+
+ 	<h4>Rendering</h4>
+
+ 	
+        <form>
+          <md-input-container>
+            <label for="testInput">Transfer Object to (x,y):</label>
+            <input type="text" id="testInput"
+                   ng-model="data" md-autofocus>
+          </md-input-container>
+        </form>
+        <md-button ng-click="close()" class="md-primary">
+          Close
+        </md-button>
+      </md-content>
+
+
+
+
+    </md-sidenav>
+
+<br><br>
 File Options:
 <button ng-click="changeGround()"> Change ground </button>
 <button ng-click="changeSky()"> Change sky </button>

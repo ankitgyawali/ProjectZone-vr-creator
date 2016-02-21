@@ -57,7 +57,7 @@ angular.module('vrApp').controller('mainController', ['$scope', '$location','Can
 
 
 
- $scope.background = 'textures/ground/grassy.png';
+ $scope.background = 'textures/ground/railtrack.png';
     //   var camera, scene, renderer, controls, element, container;
     $scope.scene = new THREE.Scene();
 
