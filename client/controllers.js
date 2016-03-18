@@ -1,46 +1,12 @@
 //Main login controller that handles login of three different user types
-angular.module('vrApp').controller('rootController', ['$scope', '$location','CanvasService',
-    function($scope, $location,CanvasService) {
-
-$scope.changeSky = function(){
-  
-        $scope.renderer.setClearColor( 0x82E851, 0.5 ); //Sky color
-}
-
-
-$scope.changeGround = function (){
-$scope.background = 'textures/ground/mars-ground.png';
+angular.module('vrApp').controller('rootController', ['$scope', '$location','CanvasService','$http',
+    function($scope, $location,CanvasService,$http) {
 
 
 
-  $scope.scene.remove($scope.mesh);
- // Debug: This is dynamic
-      $scope.texture = THREE.ImageUtils.loadTexture($scope.background);
-
-      //Texture is repeated from 4x times. (50/50 horizonatal vertical)
-      //Can be changed to 1x by 100,100
-      $scope.texture.wrapS = THREE.RepeatWrapping;
-      $scope.texture.wrapT = THREE.RepeatWrapping;
-      $scope.texture.repeat = new THREE.Vector2(50, 50);
-      $scope.texture.anisotropy = $scope.renderer.getMaxAnisotropy();
-
-      //Instantiate material object with mapped to texture
-      $scope.material = new THREE.MeshPhongMaterial({
-        color: 0xffffff,
-        specular: 0xffffff,
-        shininess: 20,
-        shading: THREE.FlatShading,
-        map: $scope.texture
-      });
-
-      //Plate Geometry. Could be changed to provide user with more option
-      //Debug: Could be hooked up with angular?
-      $scope.geometry = new THREE.PlaneGeometry(1000, 1000);
-
-      $scope.mesh = new THREE.Mesh($scope.geometry, $scope.material);
-      $scope.mesh.rotation.x = -Math.PI / 2;
-      $scope.scene.add($scope.mesh);
-
+$scope.saveEnvironment = function (){
+ $location.url('/view');
+  console.log("ok");
 }
 
 
@@ -54,7 +20,6 @@ $scope.background = 'textures/ground/mars-ground.png';
 //Main login controller that handles login of three different user types
 angular.module('vrApp').controller('mainController', ['$scope', '$location','CanvasService',
     function($scope, $location,CanvasService) {
-
 
 
  $scope.background = 'textures/ground/railtrack.png';

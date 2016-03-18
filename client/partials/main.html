@@ -5,54 +5,17 @@
     <div class="md-toolbar-tools">
 
 
-
-
-          <md-menu md-position-mode="target-right target" >
- <!-- Trigger element is a md-button with an icon -->
- <md-button ng-click="$mdOpenMenu($event)" aria-label="Open sample menu">
-<i class="fa fa-file-text"></i> File
+<md-button aria-label="Open sample menu">
+  <i class="fa fa-save"></i>
+<b>Save and generate QR Code</b>
  </md-button>
- <md-menu-content>
-   <md-menu-item><md-button ng-click="doSomething()">&nbsp;&nbsp;<i class="fa fa-file"></i>
- Create New World</md-button></md-menu-item>
 
 
-   <md-menu-item>
-
-   <md-button ng-click="doSomething()"> &nbsp; <i class="fa fa-paper-plane"></i>
-Export current world</md-button>
-
-</md-menu-item>
-
-
-   <md-menu-item>
-
-<a href="preview.html" target="_blank" style="color:inherit;text-decoration: none;">
-   <md-button><i class="fa fa-search"></i> Preview current world</md-button></a>
-
-
-</md-menu-item>
- </md-menu-content>
-</md-menu>
-
-
-
-          <md-menu md-position-mode="target-right target" >
- <!-- Trigger element is a md-button with an icon -->
- <md-button ng-click="$mdOpenMenu($event)" aria-label="Open sample menu">
-  <i class="fa fa-pencil-square"></i>
- Edit
+ <md-button aria-label="Open sample menu">
+  <i class="fa fa-file-text"></i>
+Create a new world
  </md-button>
- <md-menu-content>
-   <md-menu-item><md-button ng-click="doSomething()"><i class="fa fa-pencil-square-o"></i>
-Edit Ground</md-button></md-menu-item>
-   <md-menu-item><md-button ng-click="doSomething()"><i class="fa fa-pencil-square-o"></i>
-Edit Sky</md-button></md-menu-item>
-   <md-menu-item><md-button ng-click="doSomething()"><i class="fa fa-plus"></i>
-Add Object</md-button></md-menu-item>
-      <md-menu-item><md-button ng-click="doSomething()"><i class="fa fa-pencil-square-o"></i> Modify Object</md-button></md-menu-item>
- </md-menu-content>
-</md-menu>
+
 
 
  <md-button aria-label="Open sample menu">
@@ -75,7 +38,7 @@ Help
 
 
 
-      <span><a href="https://github.com/ankitgyawali/google-vr-creator" target="_blank">Google VR Creator</a></span>
+      <span><a href="https://github.com/ankitgyawali/ProjectZone-vr-creator" target="_blank">Project Zone VR Creator</a></span>
 
 
 
@@ -86,27 +49,22 @@ Help
   <md-content flex>
     <!-- Content could be added here instead of after two lines...  -->
 
-
-
   </md-content>
 </div>
 
 
 
-<div ng-cloak>
+<div  style="border:1px solid black;width:55%" ng-cloak>
   <md-content>
     <md-tabs md-dynamic-height md-border-bottom>
       <md-tab label="World">
         <md-content class="md-padding">
-          <h1 class="md-display-1">World Options</h1>
+          <h1 class="md-title">World Options</h1>
           <p>
 
 <br><br>
-File Options:
-<button ng-click="changeGround()"> Change ground </button>
-<button ng-click="changeSky()"> Change sky </button>
-<a href="preview.html" target="_blank"><button> Preview World </button></a>
 
+<button ng-click="saveEnvironment()"> Save and Generate QR Code! </button>
 
 
           </p>
@@ -116,7 +74,15 @@ File Options:
       <md-tab label="Rendering">
         <md-content class="md-padding">
           <h1 class="md-display-1">Rendering Options</h1>
-          <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+          <p>
+<ul>
+	<li>Foo</li>
+	<li>Bar</li>
+	<li>Baz</li>
+</ul>
+
+
+          </p>
         </md-content>
       </md-tab>
 
@@ -146,7 +112,7 @@ File Options:
           </p>
         </md-content>
       </md-tab>
-      <md-tab label="Animate Object Properties">
+      <md-tab label="Animate Object">
         <md-content class="md-padding">
                <h4>List of Objects</h4>
           <p>
