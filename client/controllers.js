@@ -1,10 +1,11 @@
 //Top level parent controller
-angular.module('vrApp').controller('mainController', ['$scope', '$location','CanvasService',
-    function($scope, $location,CanvasService) {
+angular.module('vrApp').controller('mainController', ['$scope', '$location',
+    function($scope, $location) {
       //If directly viewed from phone implement set flag to false for viewController
-      $scope.isViewFromEditor = false;
+     
       //JSON object to hold world scence if possible
       $scope.worldJSON = {};
+      $scope.worldJSON.isViewFromEditor = false;
       $scope.getworldJSON = function (value){
         $scope.worldJSON = value;
       }
@@ -15,12 +16,12 @@ angular.module('vrApp').controller('mainController', ['$scope', '$location','Can
 
 
 //Controller for Editor page
-angular.module('vrApp').controller('editorController', ['$scope', '$location','CanvasService','$http',
-    function($scope, $location,CanvasService,$http) {
+angular.module('vrApp').controller('editorController', ['$scope', '$location','$http',
+    function($scope, $location,$http) {
 
 //Save Function
 $scope.saveEnvironment = function (){
-  //Debug: Set a flag value here ??? for saveController in case user tries to access it directly
+//Debug: Set a flag value here ??? for saveController in case user tries to access it directly
  $location.url('/save');
 }
 }
@@ -42,7 +43,7 @@ $scope.qrLink = Math.random();
 $scope.viewQRWorld = function()
 {
 //Flag to check in view controller if the world is from editor
-$scope.isViewFromEditor = true;
+$scope.worldJSON.isViewFromEditor = true;
 $scope.worldJSON.name = 'World Number #' + $scope.qrLink;
  $location.url('/view');
 }
@@ -51,18 +52,3 @@ $scope.worldJSON.name = 'World Number #' + $scope.qrLink;
    ]);
 
 
-//Render the virtual reality scence here
-angular.module('vrApp').controller('viewController', ['$scope', '$location','CanvasService',
-    function($scope, $location,CanvasService) {
-
-      //Debug: First check if user is trying to view from pc here.
-
-      if($scope.isViewFromEditor){
-        console.log("access from local json object directly")
-      }
-      else{
-        console.log("access view from database");
-      }
-
-   }
-   ]);

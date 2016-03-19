@@ -25,6 +25,10 @@
 <script src="js/OrbitControls.js"></script><!-- Get control with mouse for users from pc -->
 
 
+        <script src="js/StereoEffect.js"></script> <!-- Library to split images into two for 3d effect  -->
+        <script src="js/DeviceOrientationControls.js"></script><!-- Get control with cell phone device orientation -->
+
+        
 
 
 	</head>
@@ -36,13 +40,12 @@
 
 </div>
 
-    <div id="maincanvas"  style="display:none;position: absolute;width:45%;height:90%;right: 0;overflow-y: hidden;overflow-x: hidden; bottom: 1px; border: 1px solid green;">
+ 
 
 
 
 
-<!-- <div id="maincanvas" style="position: absolute;top:100%;right:0%;width:35%;height:70%"></div>
- -->
+
 		  <!-- Angular Material requires Angular.js Libraries -->
   <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
@@ -60,5 +63,7 @@
 <script src="main.js"></script><!-- Main service and factory for angularjs -->
 <script src="services.js"></script>
 <script src="controllers.js"></script><!-- Main service and factory for angularjs -->
+
+<script src="mainScene.js"></script><!-- Main service and factory for angularjs -->
 	</body>
 </html>

@@ -16,7 +16,11 @@ vrApp.config(function($routeProvider) {
             templateUrl: 'partials/save.html',
             controller: 'saveController'
         })
-        .when('/view', {
+          .when('/view', {
+            templateUrl: 'partials/view.html',
+            controller: 'viewController'
+        })
+        .when('/view/:param1', {
             templateUrl: 'partials/view.html',
             controller: 'viewController'
         })

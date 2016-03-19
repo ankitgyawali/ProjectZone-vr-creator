@@ -1,9 +1,9 @@
-angular.module('vrApp').factory('CanvasService', ['$http',
+angular.module('vrApp').factory('RenderService', ['$http',
     function($http) {
 
  return ({ //All of the data is stored as cookie by utilizing $cookies
             init: init, //Is user logged in
-            changeBackground:changeBackground
+            converJSON:converJSON
         });
 
         function init() {
@@ -11,8 +11,8 @@ angular.module('vrApp').factory('CanvasService', ['$http',
 
         }
 
-        function changeBackground(){
-
+        function converJSON(){
+		console.log("this is converting the json");
         }
 
 
