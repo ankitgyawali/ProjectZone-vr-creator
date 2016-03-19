@@ -3,8 +3,7 @@
 // Description: Main App for VR creator
 
 //Define angular app and its dependencies
-var vrApp = angular.module('vrApp', ['ngMaterial','ngRoute']);
-
+var vrApp = angular.module('vrApp', ['ngMaterial','ngRoute','monospaced.qrcode']);
 
 //Route configuration to provide different level of access controls to different user group
 vrApp.config(function($routeProvider) {
@@ -12,6 +11,10 @@ vrApp.config(function($routeProvider) {
         .when('/', {
             templateUrl: 'partials/main.html',
             controller: 'rootController'
+        })
+        .when('/save', {
+            templateUrl: 'partials/save.html',
+            controller: 'saveController'
         })
     // use the HTML5 History API
     // $locationProvider.html5Mode(true);
@@ -34,5 +37,5 @@ vrApp.config(function($mdThemingProvider) {
 vrApp.run(['$rootScope',
     function($rootScope) {
  $rootScope.vrAppTitle = "Project Zone Reality Creator"; 
-    	    }
+ }
 ]);

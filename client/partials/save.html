@@ -1,0 +1,84 @@
+<div>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+
+
+
+
+
+ <md-button aria-label="Open sample menu">
+  <i class="fa fa-file-text"></i>
+Create a new world
+ </md-button>
+
+
+
+ <md-button aria-label="Open sample menu">
+  <i class="fa fa-download"></i>
+Download as JSON
+ </md-button>
+
+  <md-button aria-label="Open sample menu">
+  <i class="fa fa-share-alt"></i>
+Share
+ </md-button>
+
+  <md-button aria-label="Open sample menu">
+  <i class="fa fa-info-circle"></i>
+Help
+ </md-button>
+
+      <!-- fill up the space between left and right area -->
+      <span flex></span>
+
+
+
+      <span><a href="https://github.com/ankitgyawali/ProjectZone-vr-creator" target="_blank">Project Zone VR Creator</a></span>
+
+
+
+
+    </div>
+  </md-toolbar>
+	
+<br>
+
+
+
+   <md-card>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Virtual Reality Scene</span>
+            <span class="md-subhead">Saved Successfully</span>
+          </md-card-title-text>
+
+        </md-card-title>
+
+
+
+ <div layout="row" flex layout-align="center center">
+   <div layout="column" layout-align="center">
+    <h1>Your QR Code</h1>
+<qrcode version="4" error-correction-level="M" size="300" data="{{qrLink}}" download></qrcode>
+
+
+
+
+    <p class="md-caption">
+<a href="#">{{qrLink}}</a>
+<br>
+    *Use your phone to read this QR Code</p>
+
+  </div>
+ </div>
+
+
+
+
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button>Preview my Link</md-button>
+
+        </md-card-actions>
+      </md-card>
+
+</div>
