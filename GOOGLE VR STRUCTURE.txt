@@ -26,3 +26,21 @@ object-> rotate,translate,transform
 	  file upload/download in angularjs
 	  geometry-mesh-scene interaction
 
+
+
+World JSON:
+
+authorname:
+authoremail:
+scene: 
+	 ground[String] (texture/color)
+	 ceiling[String] (texture/color)
+	 type[Object]  (room/openworld)
+	 	if(room) -> wall (texture/color)
+	 		(if all wall) -> all wall texture color
+	 		else -> wall 1,2,3,4
+	 object[Array]
+	 	object (texture/color) [String]
+	 	object position [Array of Numbers]
+	 	object animation properties [Object???]
+	 cameraPosition [Object] (optional)

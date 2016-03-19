@@ -14,6 +14,10 @@ router.get('/logout', function(req, res) {
 });
 
 
+//Destroys session variables held on the server side during the app cycle.
+router.post('/save', function(req, res) {
+   console.log("saving world..")
+});
 
 
 
