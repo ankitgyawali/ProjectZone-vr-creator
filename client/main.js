@@ -10,11 +10,15 @@ vrApp.config(function($routeProvider) {
    $routeProvider
         .when('/', {
             templateUrl: 'partials/main.html',
-            controller: 'rootController'
+            controller: 'editorController'
         })
         .when('/save', {
             templateUrl: 'partials/save.html',
             controller: 'saveController'
+        })
+        .when('/view', {
+            templateUrl: 'partials/view.html',
+            controller: 'viewController'
         })
     // use the HTML5 History API
     // $locationProvider.html5Mode(true);
