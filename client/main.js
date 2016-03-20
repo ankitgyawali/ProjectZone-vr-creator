@@ -47,3 +47,9 @@ vrApp.run(['$rootScope',
  $rootScope.vrAppTitle = "Project Zone Reality Creator"; 
  }
 ]);
+
+
+//Quick angular function to check if value is defined or null
+angular.isUndefinedOrNull = function(val) {
+    return angular.isUndefined(val) || val === null
+}

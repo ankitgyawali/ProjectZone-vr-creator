@@ -1,0 +1,355 @@
+<html>
+
+    <head>
+    <meta name="description" content="Google VR Creator">
+    <meta name="keywords" content="Google VR, Virtual Reality,VR,vr,google cardboard,VR creator,create vr">
+        <meta name="author" content="Ankit Gyawali">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>WORLD 3</title>
+        <style>
+        /*  CSS to stretch canvas to fit whole html
+        */
+            body { margin: 0; }
+            canvas { width: 100%; height: 100% }
+        </style>
+
+
+    </head>
+    <body>
+
+
+
+    <div id="maincanvas" style="width:100%;height:100%"></div>
+
+
+
+        <script src="js/three.js"></script><!-- Latest version of three js -->
+        <script src="js/StereoEffect.js"></script> <!-- Library to split images into two for 3d effect  -->
+        <script src="js/DeviceOrientationControls.js"></script><!-- Get control with cell phone device orientation -->
+        <script src="js/OrbitControls.js"></script><!-- Get control with mouse for users from pc -->
+        <script src="js/threex.videotexture.js"></script><!-- Get control with mouse for users from pc -->
+       
+        
+        <script>
+    var camera, scene, renderer; //Initialize vars to create world
+    var effect, controls;
+    var element, container;
+
+// custom global variables
+var video, videoImage, videoImageContext, videoTexture;
+
+
+    var clock = new THREE.Clock(); //Debug: Read up on this
+
+    init();
+    animate();
+
+    function init() {
+      scene = new THREE.Scene();
+      renderer = new THREE.WebGLRenderer(); //Use webGL
+      element = renderer.domElement;
+      container = document.getElementById('maincanvas');
+      container.appendChild(element);
+    /*  
+ // left wall
+    geo = new THREE.PlaneGeometry(50,20);
+    var wallleft = new THREE.Mesh(geo ,new THREE.MeshBasicMaterial({color : 0xcccc00}));
+    wallleft.material.side = THREE.DoubleSide;
+    wallleft.rotation.y = Math.PI/2;
+    wallleft.position.x = -5;
+    wallleft.position.z = 50;
+    scene.add(wallleft);
+    */
+    
+    
+
+
+
+     // Debug: This is dynamic
+      var texture = THREE.ImageUtils.loadTexture(
+        'textures/ground/grassy.png'
+      );
+
+      //Texture is repeated from 4x times. (50/50 horizonatal vertical)
+      //Can be changed to 1x by 100,100
+      texture.wrapS = THREE.RepeatWrapping;
+      texture.wrapT = THREE.RepeatWrapping;
+      texture.repeat = new THREE.Vector2(50, 50);
+      texture.anisotropy = renderer.getMaxAnisotropy();
+
+      //Instantiate material object with mapped to texture
+      var material = new THREE.MeshPhongMaterial({
+        color: 0xffffff,
+        specular: 0xffffff,
+        shininess: 20,
+        shading: THREE.FlatShading,
+        map: texture
+      });
+
+
+
+            
+var geometryLateral = new THREE.BoxGeometry(0.2, 75, 100);
+var wall1 = new THREE.Mesh(geometryLateral, material);
+scene.add(wall1);
+wall1.position.x=-50;
+
+
+
+
+// create the video element
+  video = document.createElement( 'video' );
+  // video.id = 'video';
+  // video.type = ' video/ogg; codecs="theora, vorbis" ';
+  video.src = "videos/small.ogv";
+  video.load(); // must call after setting/changing source
+  video.play();
+  
+  // alternative method -- 
+  // create DIV in HTML:
+  // <video id="myVideo" autoplay style="display:none">
+  //    <source src="http://techslides.com/demos/sample-videos/small.ogv" type='video/ogg; codecs="theora, vorbis"'>
+  // </video>
+  // and set JS variable:
+  // video = document.getElementById( 'myVideo' );
+  
+  videoImage = document.createElement( 'canvas' );
+  videoImage.width = 480;
+  videoImage.height = 204;
+
+  videoImageContext = videoImage.getContext( '2d' );
+  // background color if no video present
+  videoImageContext.fillStyle = '#000000';
+  videoImageContext.fillRect( 0, 0, videoImage.width, videoImage.height );
+
+  videoTexture = new THREE.Texture( videoImage );
+  videoTexture.minFilter = THREE.LinearFilter;
+  videoTexture.magFilter = THREE.LinearFilter;
+  
+  var movieMaterial = new THREE.MeshBasicMaterial( { map: videoTexture, overdraw: true, side:THREE.DoubleSide } );
+
+
+
+
+
+
+var wall2 = new THREE.Mesh(geometryLateral, movieMaterial);
+scene.add(wall2);
+wall2.position.x=50;
+
+
+
+
+ // Debug: This is dynamic
+      var texture = THREE.ImageUtils.loadTexture(
+        'textures/ground/dark-water.png'
+      );
+
+      //Texture is repeated from 4x times. (50/50 horizonatal vertical)
+      //Can be changed to 1x by 100,100
+      texture.wrapS = THREE.RepeatWrapping;
+      texture.wrapT = THREE.RepeatWrapping;
+      texture.repeat = new THREE.Vector2(50, 50);
+      texture.anisotropy = renderer.getMaxAnisotropy();
+
+      //Instantiate material object with mapped to texture
+      var material = new THREE.MeshPhongMaterial({
+        color: 0xffffff,
+        specular: 0xffffff,
+        shininess: 20,
+        shading: THREE.FlatShading,
+        map: texture
+      });
+
+
+
+     // Debug: This is dynamic
+      var texture = THREE.ImageUtils.loadTexture(
+        'textures/ground/mars-ground.png'
+      );
+
+      //Texture is repeated from 4x times. (50/50 horizonatal vertical)
+      //Can be changed to 1x by 100,100
+      texture.wrapS = THREE.RepeatWrapping;
+      texture.wrapT = THREE.RepeatWrapping;
+      texture.repeat = new THREE.Vector2(50, 50);
+      texture.anisotropy = renderer.getMaxAnisotropy();
+
+      //Instantiate material object with mapped to texture
+      var material = new THREE.MeshPhongMaterial({
+        color: 0xffffff,
+        specular: 0xffffff,
+        shininess: 20,
+        shading: THREE.FlatShading,
+        map: texture
+      });
+
+
+
+
+var wall3 = new THREE.Mesh(geometryLateral, material);
+wall3.rotation.y = Math.PI / 2;
+scene.add(wall3);
+wall3.position.z=-50;
+
+
+
+
+
+
+
+
+
+
+
+
+var wall4 = new THREE.Mesh(geometryLateral, material);
+wall4.rotation.y = Math.PI / 2;
+scene.add(wall4);
+wall4.position.z=+50;
+
+
+
+//SPHERE
+
+
+        
+
+            
+            
+
+effect = new THREE.StereoEffect(renderer); //Stereo effect object created from stereoeffect.js library
+
+      
+
+      camera = new THREE.PerspectiveCamera(120, 1, 0.001, 700); //Make this dynamic. Debug: Scaffold with angularjs
+      camera.position.set(0, 10, 0); //Second position sets height of camera Debug: Dynamic
+      scene.add(camera);
+
+      controls = new THREE.OrbitControls(camera, element); //Attach camera to mouse/swipe
+      controls.rotateUp(Math.PI / 4);
+      controls.target.set(
+        camera.position.x + 0.1,
+        camera.position.y,
+        camera.position.z
+      );
+      controls.noZoom = true;
+      controls.noPan = true;
+
+      function setOrientationControls(e) {
+        if (!e.alpha) {
+          return;
+        }
+
+        controls = new THREE.DeviceOrientationControls(camera, true);
+        controls.connect();
+        controls.update();
+
+        element.addEventListener('click', fullscreen, false);
+
+        window.removeEventListener('deviceorientation', setOrientationControls, true);
+      }
+      window.addEventListener('deviceorientation', setOrientationControls, true);
+
+
+    var light = new THREE.AmbientLight( 0xE6E3E3 ); // soft white light
+    scene.add( light );
+
+    
+      //Set Color
+      renderer.setClearColorHex( 0x000000, 0.5 );
+
+     // Debug: This is dynamic
+      var texture = THREE.ImageUtils.loadTexture(
+        'textures/ground/railtrack.png'
+      );
+
+      //Texture is repeated from 4x times. (50/50 horizonatal vertical)
+      //Can be changed to 1x by 100,100
+      texture.wrapS = THREE.RepeatWrapping;
+      texture.wrapT = THREE.RepeatWrapping;
+      texture.repeat = new THREE.Vector2(50, 50);
+      texture.anisotropy = renderer.getMaxAnisotropy();
+
+      //Instantiate material object with mapped to texture
+      var material = new THREE.MeshPhongMaterial({
+        color: 0xffffff,
+        specular: 0xffffff,
+        shininess: 20,
+        shading: THREE.FlatShading,
+        map: texture
+      });
+
+      //Plate Geometry. Could be changed to provide user with more option
+      //Debug: Could be hooked up with angular?
+      var geometry = new THREE.PlaneGeometry(1000, 1000);
+
+      var mesh = new THREE.Mesh(geometry, material);
+      mesh.rotation.x = -Math.PI / 2;
+      scene.add(mesh);
+
+      window.addEventListener('resize', resize, false);
+      setTimeout(resize, 1);
+    }
+
+    function resize() {
+      var width = container.offsetWidth;
+      var height = container.offsetHeight;
+
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+
+      renderer.setSize(width, height);
+      effect.setSize(width, height);
+    }
+
+    function update(dt) {
+      resize();
+
+      camera.updateProjectionMatrix();
+
+      controls.update(dt);
+    }
+
+    function render(dt) {
+
+
+
+  if ( video.readyState === video.HAVE_ENOUGH_DATA ) 
+  {
+    videoImageContext.drawImage( video, 0, 0 );
+    if ( videoTexture ) 
+      videoTexture.needsUpdate = true;
+  }
+
+      effect.render(scene, camera);
+    }
+
+    function animate(t) {
+
+
+      requestAnimationFrame(animate);
+
+      update(clock.getDelta());
+      render(clock.getDelta());
+    }
+
+    //For cell phone
+    function fullscreen() {
+      if (container.requestFullscreen) {
+        container.requestFullscreen();
+      } else if (container.msRequestFullscreen) {
+        container.msRequestFullscreen();
+      } else if (container.mozRequestFullScreen) {
+        container.mozRequestFullScreen();
+      } else if (container.webkitRequestFullscreen) {
+        container.webkitRequestFullscreen();
+      }
+    }
+  </script>
+
+
+    </body>
+</html>

@@ -1,18 +1,21 @@
+
 //Render the virtual reality scence here
 angular.module('vrApp').controller('viewController', ['$scope', '$location',
     function($scope, $location) {
 
 
-      $scope.worldJSON.author = "John Doe";
-      $scope.worldJSON.sky = true;
-      $scope.worldJSON.skyMaterial = "Sky Blue";
-      $scope.worldJSON.ground = "true";
-      $scope.worldJSON.groundMaterial = "0xff00ff";
-      $scope.worldJSON.room = "true";
+      //Debug: Manual JSON Here, use conver service later
+      $scope.worldJSON.lightColor = 0xE6E3E3; //Light white
+      $scope.worldJSON.skyColor = 0x87CEEB; //Sky blue
+      $scope.worldJSON.groundTexture = 'textures/ground/stone.png';
+      $scope.worldJSON.room = "false";
+      $scope.worldJSON.cameraZposition = 10; //Default 10 
       $scope.worldJSON.roomSize = 25;
-      $scope.worldJSON.roomWall = "0xffff00";
-      //Debug: First check if user is trying to view from pc here.
+      
+      //IF NOT GROUND TEXTURE
 
+
+      //Debug: First check if user is trying to view from pc here.
       if($scope.worldJSON.isViewFromEditor==true){
         console.log("this is world json: "+ JSON.stringify($scope.worldJSON));
         console.log("access from local json object directly")
@@ -26,14 +29,13 @@ angular.module('vrApp').controller('viewController', ['$scope', '$location',
 //***********************************************
 
 
- $scope.background = 'textures/ground/brick.png';
 
 
     //   var camera, scene, renderer, controls, element, container;
     $scope.scene = new THREE.Scene();
 
     $scope.camera = new THREE.PerspectiveCamera(120, 1, 0.001, 700); //Make this dynamic. Debug: Scaffold with angularjs
-     $scope.camera.position.set(0, 10, 0); //Second position sets height of camera Debug: Dynamic
+     $scope.camera.position.set(0, $scope.worldJSON.cameraZposition, 0); //Second position sets height of camera Debug: Dynamic
      $scope.scene.add($scope.camera);
 
     $scope.renderer = new THREE.WebGLRenderer(); //Use webGL
@@ -83,15 +85,15 @@ angular.module('vrApp').controller('viewController', ['$scope', '$location',
       window.addEventListener('deviceorientation', setOrientationControls, true);
 
 
-  $scope.light = new THREE.AmbientLight( 0xE6E3E3 ); // soft white light
+  $scope.light = new THREE.AmbientLight($scope.worldJSON.lightColor); // soft white light
   $scope.scene.add($scope.light );
 
   
       //Set Color
-      $scope.renderer.setClearColor( 0x87CEEB, 0.5 ); //Sky color
+      $scope.renderer.setClearColor( $scope.worldJSON.skyColor, 0.5 ); //Sky color
      
      // Debug: This is dynamic
-      $scope.texture = THREE.ImageUtils.loadTexture($scope.background);
+      $scope.texture = THREE.ImageUtils.loadTexture($scope.worldJSON.groundTexture);
 
       //Texture is repeated from 4x times. (50/50 horizonatal vertical)
       //Can be changed to 1x by 100,100
@@ -103,11 +105,13 @@ angular.module('vrApp').controller('viewController', ['$scope', '$location',
       //Instantiate material object with mapped to texture
       $scope.material = new THREE.MeshPhongMaterial({
         color: 0xffffff,
-        specular: 0xffffff,
+        specular: 0xff0000,
         shininess: 20,
         shading: THREE.FlatShading,
         map: $scope.texture
       });
+
+      // $scope.material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
 
       //Plate Geometry. Could be changed to provide user with more option
       //Debug: Could be hooked up with angular?
