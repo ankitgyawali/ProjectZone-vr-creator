@@ -3,7 +3,7 @@ angular.module('vrApp').factory('RenderService', ['$http',
 
  return ({ //All of the data is stored as cookie by utilizing $cookies
             init: init, //Is user logged in
-            converJSON:converJSON
+            convertJSON:convertJSON
         });
 
         function init() {
@@ -11,7 +11,7 @@ angular.module('vrApp').factory('RenderService', ['$http',
 
         }
 
-        function converJSON(){
+        function convertJSON(){
 		console.log("this is converting the json");
         }
 

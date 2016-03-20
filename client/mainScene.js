@@ -23,22 +23,12 @@ angular.module('vrApp').controller('viewController', ['$scope', '$location',
       }
 
 
-
-
-
-
-
-
-
-
-
-
-
 //***********************************************
 
 
+ $scope.background = 'textures/ground/brick.png';
 
- $scope.background = 'textures/ground/railtrack.png';
+
     //   var camera, scene, renderer, controls, element, container;
     $scope.scene = new THREE.Scene();
 
@@ -60,15 +50,12 @@ angular.module('vrApp').controller('viewController', ['$scope', '$location',
     init();
     animate();
 
+
+
     function init() {
+  
 
-   
-
-
-
-      // effect = new THREE.StereoEffect(renderer); //Stereo effect object created from stereoeffect.js library
-
-      
+     $scope.effect = new THREE.StereoEffect($scope.renderer); //Stereo effect object created from stereoeffect.js library
 
       $scope.controls = new THREE.OrbitControls($scope.camera,$scope.element); //Attach camera to mouse/swipe
       $scope.controls.rotateUp(Math.PI / 4);
@@ -136,14 +123,14 @@ angular.module('vrApp').controller('viewController', ['$scope', '$location',
     }
 
     function resize() {
-      var width = $scope.container.offsetWidth;
-      var height = $scope.container.offsetHeight;
+      $scope.width = $scope.container.offsetWidth;
+      $scope.height = $scope.container.offsetHeight;
 
-      $scope.camera.aspect = width / height;
+      $scope.camera.aspect = $scope.width / $scope.height;
       $scope.camera.updateProjectionMatrix();
 
-      $scope.renderer.setSize(width, height);
-      // effect.setSize(width, height);
+      $scope.renderer.setSize($scope.width, $scope.height);
+      $scope.effect.setSize($scope.width, $scope.height);
     }
 
     function update(dt) {
@@ -154,8 +141,9 @@ angular.module('vrApp').controller('viewController', ['$scope', '$location',
       $scope.controls.update(dt);
     }
 
+
     function render(dt) {
-     $scope.renderer.render($scope.scene, $scope.camera);
+     $scope.effect.render($scope.scene, $scope.camera);
     }
 
     function animate(t) {
@@ -177,7 +165,6 @@ angular.module('vrApp').controller('viewController', ['$scope', '$location',
         $scope.container.webkitRequestFullscreen();
       }
     }
-
 
 
 

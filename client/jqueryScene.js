@@ -109,7 +109,7 @@ effect = new THREE.StereoEffect(renderer); //Stereo effect object created from s
 
     
       //Set Color
-      renderer.setClearColorHex( 0x000000, 0.5 );
+      renderer.setClearColor( 0x000000, 0.5 );
 
      // Debug: This is dynamic
       var texture = THREE.ImageUtils.loadTexture(
