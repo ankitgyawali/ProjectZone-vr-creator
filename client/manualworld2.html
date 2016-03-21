@@ -60,7 +60,28 @@
     */
     
     
-var material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+     // Debug: This is dynamic
+      var texture = THREE.ImageUtils.loadTexture(
+        'textures/ground/brick.png'
+      );
+
+      //Texture is repeated from 4x times. (50/50 horizonatal vertical)
+      //Can be changed to 1x by 100,100
+      texture.wrapS = THREE.RepeatWrapping;
+      texture.wrapT = THREE.RepeatWrapping;
+
+      texture.anisotropy = renderer.getMaxAnisotropy();
+
+      //Instantiate material object with mapped to texture
+      var material = new THREE.MeshPhongMaterial({
+        color: 0xffffff,
+        specular: 0xffffff,
+        shininess: 20,
+        shading: THREE.FlatShading,
+        map: texture
+      });
+
+
             
 var geometryLateral = new THREE.BoxGeometry(0.2, 75, 100);
 var wall1 = new THREE.Mesh(geometryLateral, material);
@@ -84,9 +105,23 @@ wall4.rotation.y = Math.PI / 2;
 scene.add(wall4);
 wall4.position.z=+50;
 
+
+
+var material = new THREE.MeshBasicMaterial( { color: 0xFF0000 } );
+
+var ceiling = new THREE.Mesh(geometryLateral, material);
+ceiling.rotation.y = Math.PI / 2;
+ceiling.rotation.x = Math.PI / 2;
+ceiling.position.y=+50;
+scene.add(ceiling);
+
+
+
+
+
 //CUBE
 var geometry = new THREE.BoxGeometry( 4, 4, 4 );
-var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+var material = new THREE.MeshBasicMaterial( { color: 0x0000ff } );
 var cube = new THREE.Mesh( geometry, material );
 cube.position.set(25,25,25);
 scene.add( cube );
@@ -110,7 +145,7 @@ effect = new THREE.StereoEffect(renderer); //Stereo effect object created from s
       
 
       camera = new THREE.PerspectiveCamera(120, 1, 0.001, 700); //Make this dynamic. Debug: Scaffold with angularjs
-      camera.position.set(0, 10, 0); //Second position sets height of camera Debug: Dynamic
+      camera.position.set(0, 15, 0); //Second position sets height of camera Debug: Dynamic
       scene.add(camera);
 
       controls = new THREE.OrbitControls(camera, element); //Attach camera to mouse/swipe
@@ -148,7 +183,7 @@ effect = new THREE.StereoEffect(renderer); //Stereo effect object created from s
 
      // Debug: This is dynamic
       var texture = THREE.ImageUtils.loadTexture(
-        'textures/ground/railtrack.png'
+        'textures/ground/stone.png'
       );
 
       //Texture is repeated from 4x times. (50/50 horizonatal vertical)

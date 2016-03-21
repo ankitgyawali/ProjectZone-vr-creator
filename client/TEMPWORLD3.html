@@ -167,14 +167,14 @@ wall2.position.x=50;
 
      // Debug: This is dynamic
       var texture = THREE.ImageUtils.loadTexture(
-        'textures/ground/black-tile.png'
+        'textures/ground/mars-ground.png'
       );
 
       //Texture is repeated from 4x times. (50/50 horizonatal vertical)
       //Can be changed to 1x by 100,100
       texture.wrapS = THREE.RepeatWrapping;
       texture.wrapT = THREE.RepeatWrapping;
-      texture.repeat = new THREE.Vector2(10,10);
+      texture.repeat = new THREE.Vector2(50, 50);
       texture.anisotropy = renderer.getMaxAnisotropy();
 
       //Instantiate material object with mapped to texture
@@ -263,7 +263,7 @@ effect = new THREE.StereoEffect(renderer); //Stereo effect object created from s
 
      // Debug: This is dynamic
       var texture = THREE.ImageUtils.loadTexture(
-        'textures/ground/mars-ground.png'
+        'textures/ground/railtrack.png'
       );
 
       //Texture is repeated from 4x times. (50/50 horizonatal vertical)

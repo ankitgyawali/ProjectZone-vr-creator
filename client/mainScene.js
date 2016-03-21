@@ -1,9 +1,10 @@
 
 //Render the virtual reality scence here
-angular.module('vrApp').controller('viewController', ['$scope', '$location',
-    function($scope, $location) {
+angular.module('vrApp').controller('viewController', ['$scope', '$location','$routeParams',
+    function($scope, $location,$routeParams) {
+      
 
-
+      $scope.worldJSON._id =  $routeParams.param1
       //Debug: Manual JSON Here, use conver service later
       $scope.worldJSON.lightColor = 0xE6E3E3; //Light white
       $scope.worldJSON.skyColor = 0x87CEEB; //Sky blue
@@ -11,7 +12,9 @@ angular.module('vrApp').controller('viewController', ['$scope', '$location',
       $scope.worldJSON.room = "false";
       $scope.worldJSON.cameraZposition = 10; //Default 10 
       $scope.worldJSON.roomSize = 25;
-      
+        
+
+      console.log('Mongo id is:  '+ $scope.worldJSON._id );
       //IF NOT GROUND TEXTURE
 
 
@@ -27,10 +30,6 @@ angular.module('vrApp').controller('viewController', ['$scope', '$location',
 
 
 //***********************************************
-
-
-
-
     //   var camera, scene, renderer, controls, element, container;
     $scope.scene = new THREE.Scene();
 

@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>WORLD 3</title>
+        <title> object world</title>
         <style>
         /*  CSS to stretch canvas to fit whole html
         */
@@ -29,17 +29,14 @@
         <script src="js/StereoEffect.js"></script> <!-- Library to split images into two for 3d effect  -->
         <script src="js/DeviceOrientationControls.js"></script><!-- Get control with cell phone device orientation -->
         <script src="js/OrbitControls.js"></script><!-- Get control with mouse for users from pc -->
-        <script src="js/threex.videotexture.js"></script><!-- Get control with mouse for users from pc -->
+        
+          <script src="js/OBJLoader.js"></script><!-- Get control with mouse for users from pc -->
        
         
         <script>
     var camera, scene, renderer; //Initialize vars to create world
     var effect, controls;
     var element, container;
-
-// custom global variables
-var video, videoImage, videoImageContext, videoTexture;
-
 
     var clock = new THREE.Clock(); //Debug: Read up on this
 
@@ -64,19 +61,16 @@ var video, videoImage, videoImageContext, videoTexture;
     */
     
     
-
-
-
      // Debug: This is dynamic
       var texture = THREE.ImageUtils.loadTexture(
-        'textures/ground/grassy.png'
+        'textures/ground/brick.png'
       );
 
       //Texture is repeated from 4x times. (50/50 horizonatal vertical)
       //Can be changed to 1x by 100,100
       texture.wrapS = THREE.RepeatWrapping;
       texture.wrapT = THREE.RepeatWrapping;
-      texture.repeat = new THREE.Vector2(50, 50);
+
       texture.anisotropy = renderer.getMaxAnisotropy();
 
       //Instantiate material object with mapped to texture
@@ -87,7 +81,6 @@ var video, videoImage, videoImageContext, videoTexture;
         shading: THREE.FlatShading,
         map: texture
       });
-
 
 
             
@@ -95,97 +88,9 @@ var geometryLateral = new THREE.BoxGeometry(0.2, 75, 100);
 var wall1 = new THREE.Mesh(geometryLateral, material);
 scene.add(wall1);
 wall1.position.x=-50;
-
-
-
-
-// create the video element
-  video = document.createElement( 'video' );
-  // video.id = 'video';
-  // video.type = ' video/ogg; codecs="theora, vorbis" ';
-  video.src = "videos/small.ogv";
-  video.load(); // must call after setting/changing source
-  video.play();
-  
-  // alternative method -- 
-  // create DIV in HTML:
-  // <video id="myVideo" autoplay style="display:none">
-  //    <source src="http://techslides.com/demos/sample-videos/small.ogv" type='video/ogg; codecs="theora, vorbis"'>
-  // </video>
-  // and set JS variable:
-  // video = document.getElementById( 'myVideo' );
-  
-  videoImage = document.createElement( 'canvas' );
-  videoImage.width = 480;
-  videoImage.height = 204;
-
-  videoImageContext = videoImage.getContext( '2d' );
-  // background color if no video present
-  videoImageContext.fillStyle = '#000000';
-  videoImageContext.fillRect( 0, 0, videoImage.width, videoImage.height );
-
-  videoTexture = new THREE.Texture( videoImage );
-  videoTexture.minFilter = THREE.LinearFilter;
-  videoTexture.magFilter = THREE.LinearFilter;
-  
-  var movieMaterial = new THREE.MeshBasicMaterial( { map: videoTexture, overdraw: true, side:THREE.DoubleSide } );
-
-
-
-
-
-
-var wall2 = new THREE.Mesh(geometryLateral, movieMaterial);
+var wall2 = new THREE.Mesh(geometryLateral, material);
 scene.add(wall2);
 wall2.position.x=50;
-
-
-
-
- // Debug: This is dynamic
-      var texture = THREE.ImageUtils.loadTexture(
-        'textures/ground/dark-water.png'
-      );
-
-      //Texture is repeated from 4x times. (50/50 horizonatal vertical)
-      //Can be changed to 1x by 100,100
-      texture.wrapS = THREE.RepeatWrapping;
-      texture.wrapT = THREE.RepeatWrapping;
-      texture.repeat = new THREE.Vector2(50, 50);
-      texture.anisotropy = renderer.getMaxAnisotropy();
-
-      //Instantiate material object with mapped to texture
-      var material = new THREE.MeshPhongMaterial({
-        color: 0xffffff,
-        specular: 0xffffff,
-        shininess: 20,
-        shading: THREE.FlatShading,
-        map: texture
-      });
-
-
-
-     // Debug: This is dynamic
-      var texture = THREE.ImageUtils.loadTexture(
-        'textures/ground/black-tile.png'
-      );
-
-      //Texture is repeated from 4x times. (50/50 horizonatal vertical)
-      //Can be changed to 1x by 100,100
-      texture.wrapS = THREE.RepeatWrapping;
-      texture.wrapT = THREE.RepeatWrapping;
-      texture.repeat = new THREE.Vector2(10,10);
-      texture.anisotropy = renderer.getMaxAnisotropy();
-
-      //Instantiate material object with mapped to texture
-      var material = new THREE.MeshPhongMaterial({
-        color: 0xffffff,
-        specular: 0xffffff,
-        shininess: 20,
-        shading: THREE.FlatShading,
-        map: texture
-      });
-
 
 
 
@@ -196,15 +101,6 @@ wall3.position.z=-50;
 
 
 
-
-
-
-
-
-
-
-
-
 var wall4 = new THREE.Mesh(geometryLateral, material);
 wall4.rotation.y = Math.PI / 2;
 scene.add(wall4);
@@ -212,11 +108,76 @@ wall4.position.z=+50;
 
 
 
+var material = new THREE.MeshBasicMaterial( { color: 0xFF0000 } );
+
+var ceiling = new THREE.Mesh(geometryLateral, material);
+ceiling.rotation.y = Math.PI / 2;
+ceiling.rotation.x = Math.PI / 2;
+ceiling.position.y=+50;
+scene.add(ceiling);
+
+
+
+
+
+//CUBE
+var geometry = new THREE.BoxGeometry( 4, 4, 4 );
+var material = new THREE.MeshBasicMaterial( { color: 0x0000ff } );
+var cube = new THREE.Mesh( geometry, material );
+cube.position.set(25,25,25);
+scene.add( cube );
+
 //SPHERE
 
 
-        
 
+
+
+
+
+    // prepare loader and load the model
+    var oLoader = new THREE.OBJLoader();
+    oLoader.load('objects/chair.obj', function(object, materials) {
+
+      // var material = new THREE.MeshFaceMaterial(materials);
+      var material2 = new THREE.MeshLambertMaterial({ color: 0xa65e00 });
+
+      object.traverse( function(child) {
+        if (child instanceof THREE.Mesh) {
+
+          // apply custom material
+          child.material = material2;
+
+          // enable casting shadows
+          child.castShadow = true;
+          child.receiveShadow = true;
+        }
+      });
+      
+      object.position.x = 20;
+      object.position.y = 0;
+      object.position.z = 0;
+
+      object.rotation.y = -Math.PI/2 ;
+
+
+      object.scale.set(0.2, 0.2, 0.2);
+      scene.add(object);
+});
+
+    
+
+
+
+
+
+var geometry = new THREE.SphereGeometry(1, 32, 32);
+var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+var sphere = new THREE.Mesh( geometry, material );
+sphere.position.set(25,5,25);
+scene.add( sphere );
+        
+            
             
             
 
@@ -225,7 +186,7 @@ effect = new THREE.StereoEffect(renderer); //Stereo effect object created from s
       
 
       camera = new THREE.PerspectiveCamera(120, 1, 0.001, 700); //Make this dynamic. Debug: Scaffold with angularjs
-      camera.position.set(0, 10, 0); //Second position sets height of camera Debug: Dynamic
+      camera.position.set(0, 15, 0); //Second position sets height of camera Debug: Dynamic
       scene.add(camera);
 
       controls = new THREE.OrbitControls(camera, element); //Attach camera to mouse/swipe
@@ -263,7 +224,7 @@ effect = new THREE.StereoEffect(renderer); //Stereo effect object created from s
 
      // Debug: This is dynamic
       var texture = THREE.ImageUtils.loadTexture(
-        'textures/ground/mars-ground.png'
+        'textures/ground/stone.png'
       );
 
       //Texture is repeated from 4x times. (50/50 horizonatal vertical)
@@ -314,22 +275,10 @@ effect = new THREE.StereoEffect(renderer); //Stereo effect object created from s
     }
 
     function render(dt) {
-
-
-
-  if ( video.readyState === video.HAVE_ENOUGH_DATA ) 
-  {
-    videoImageContext.drawImage( video, 0, 0 );
-    if ( videoTexture ) 
-      videoTexture.needsUpdate = true;
-  }
-
       effect.render(scene, camera);
     }
 
     function animate(t) {
-
-
       requestAnimationFrame(animate);
 
       update(clock.getDelta());
