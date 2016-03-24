@@ -1,0 +1,23 @@
+index.html -> no stereo, option for background/camera/light
+		->pass to angular service
+		-> From save option ??? -> download json object that was created
+
+preview.html -> Must get json stored in angular service  (Contains stereo effect)
+
+
+dynamic url -> Must fetch json from server itself  (contains stereo effect)
+		https://docs.mongodb.org/manual/tutorial/expire-data/
+
+upload.html -> lets user upload json of the world created and load from that json (Contains stereo effect
+
+
+edit.html -> Let user modify that json object before going to preview
+
+
+json structure to be stored in service for preview and download 
+
+->
+ 
+ canvasservice -> 
+ 		init to three js scene
+ 		 hold default stored in json array  

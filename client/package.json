@@ -1,0 +1,22 @@
+{
+  "name": "vrc",
+  "scripts": {
+    "start": "killall -KILL node && nodemon server/server.js && cd! && node!"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.3.5",
+     "body-parser": "^1.8.4",
+    "debug": "^2.0.0",
+    "express": "^4.9.8",
+    "express-session": "^1.11.2",
+    "mongoose": "^4.0.4",
+     "morgan": "^1.3.2",
+    "serve-favicon": "^2.1.7",
+    "angularjs-toaster": "~0.4.15",
+    "async": "~1.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ankitgyawali/checksheet-manager.git"
+  }
+}
