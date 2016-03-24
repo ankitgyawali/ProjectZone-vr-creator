@@ -19,6 +19,32 @@ angular.module('vrApp').controller('mainController', ['$scope', '$location',
 angular.module('vrApp').controller('editorController', ['$scope', '$location','$http',
     function($scope, $location,$http) {
 
+//Start Front End code ************************
+//Debug: needs changes using scope watch
+$(document).ready( function() {
+//alert('hover');
+        $('.object').click(function() {
+         $scope.whichCategory = $(this).parent();
+            $scope.copy=$(this).clone();
+//            $(this).css("position","absolute");
+      //      $(this).css("z-index","100");
+
+
+            copy.css("position", "absolute");
+            copy.addClass('draggable');
+            copy.addClass('grab');
+            $('.workspace').append(copy);
+            
+            $('.draggable').draggable({containment: ".workspace", scroll: false });
+           
+        });
+  });
+//End Front End code ************************
+
+
+
+
+
 //Save Function
 $scope.saveEnvironment = function (){
 //Debug: Set a flag value here ??? for saveController in case user tries to access it directly

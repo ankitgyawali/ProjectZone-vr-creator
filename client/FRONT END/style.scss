@@ -1,0 +1,265 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+    
+//_____________________________________
+
+$blue: #67CCEB;
+$red: #EC5B3C;
+$green: #56C1AB;
+
+body {
+    background-color: #353634; 
+
+    .viewport { 
+        width: 100%;
+        margin: auto;
+        color: #FFFDF1;
+        font-family: futura, sans-serif;
+        line-height: 1.5;
+        letter-spacing: 1px;
+        
+        h1 {
+            font-size: 30px;
+            line-height: 1;
+        }
+        
+        p {
+            font-size: 20px;
+        }
+    }
+}
+
+#logo {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#welcome {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    
+    .intro {
+        width: 100%;
+    }
+    
+    #slideshow {
+        
+        img {
+            width: 100%;
+        } 
+    }
+    
+    #intro {
+        padding: 0px 20px 0px 20px;
+    }
+    
+}
+
+#rooms {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    
+    .room {
+        width: 30%;
+        background-color: aqua;
+        height: 400px;
+    }
+    
+}
+
+.toolbar {
+//    margin-left: 50px;
+    a:link {text-decoration: none; color: black; }
+    a:visited {text-decoration: none; color: black;}
+    a:hover {text-decoration: none; color: black;}
+    a:active {text-decoration: none; color: black;}
+    width: 330px;
+    height: 100vh;
+    position: fixed;
+    background-color: black;
+    display: block;
+    
+    #logoBuild {
+        width: 90%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        
+        img {
+            width: 100%;
+        }
+    }
+    
+    .dragable {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+//        padding: 30px;
+        
+        
+   
+
+        
+    }
+    
+}
+
+
+.grab {
+    cursor: grab !important;   
+    
+}
+
+.object {
+    width: 90px;
+    height: 65px;
+        
+   
+}
+        
+#one { background-color: #6EBE44; }
+#two { background-color: #A5CE46; }
+#three { background-color: #F7EE60; }
+#four { background-color: #009050; }
+#five { background-color: #908F53; }
+#six { background-color: #F68F5A; }
+#seven { background-color: #014B50; }
+#eight { background-color: #914955; }
+#nine { background-color: #EF4C58; }
+#ten { background-color: #191750; }
+#eleven { background-color: #651B57; }
+#twelve { background-color: #ED1A59; }
+#thirteen { background-color: #2B328F; }
+#fourteen { background-color: #8E2B90; }
+#fifteen { background-color: #E63894; }
+#sixteen { background-color: #066BA9; }
+#seventeen { background-color: #6D6FAA; }
+#eighteen { background-color: #EE519C; }
+#nineteen { background-color: #00AFAB; }
+#twenty { background-color: #9AB0AD; }
+#twentyone { background-color: #F9B6A3; }
+#twentytwo { background-color: #6CC395; }
+#twentythree { background-color: #A0D299; }
+#twentyfour { background-color: #F7F3A9; }
+
+
+.workspace {
+//    position: absolute;
+    width: 700px;
+    height: 700px;
+    background-color: grey;
+    margin-left: 400px;
+    margin-top: 135px;
+    position: absolute;
+    clear: both;
+}
+
+
+.instructions{
+    position: absolute;
+    left:400px;
+    top:20px;
+    
+}
+////page navigation
+//.steps {
+//    width: 100%;
+//   
+//    height: 50px;
+//    
+//    .next {
+//        clear: both;
+//        width: 100px;
+//        height: 50px;
+//        background-color: $blue;
+//        float: right;
+//    }
+//    
+//    .previous {
+//        clear: both;
+//        width: 100px;
+//        height: 50px;
+//        background-color: $blue;
+//        float: left;
+//    }
+//}
+//    
+    
+    
+    
+    
+    #shapes{
+     
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items:baseline;
+        margin-left: 17px;
+        margin-top: 30px;
+        
+        
+    }
+
+
+    #colors{
+        display: none;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
