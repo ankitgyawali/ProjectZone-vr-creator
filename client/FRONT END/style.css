@@ -1,0 +1,321 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body {
+  background-color: #353634; }
+  body .viewport {
+    width: 100%;
+    margin: auto;
+    color: #FFFDF1;
+    font-family: futura, sans-serif;
+    line-height: 1.5;
+    letter-spacing: 1px; }
+    body .viewport h1 {
+      font-size: 30px;
+      line-height: 1; }
+    body .viewport p {
+      font-size: 20px; }
+
+#logo {
+  margin-top: 30px;
+  margin-bottom: 30px; }
+
+#welcome {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 30px; }
+  #welcome .intro {
+    width: 100%; }
+  #welcome #slideshow img {
+    width: 100%; }
+  #welcome #intro {
+    padding: 0px 20px 0px 20px; }
+
+#rooms {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around; }
+  #rooms .room {
+    width: 30%;
+    background-color: aqua;
+    height: 400px; }
+
+.toolbar {
+  width: 330px;
+  height: 100vh;
+  position: fixed;
+  background-color: black;
+  display: block; }
+  .toolbar a:link {
+    text-decoration: none;
+    color: black; }
+  .toolbar a:visited {
+    text-decoration: none;
+    color: black; }
+  .toolbar a:hover {
+    text-decoration: none;
+    color: black; }
+  .toolbar a:active {
+    text-decoration: none;
+    color: black; }
+  .toolbar #logoBuild {
+    width: 90%;
+    margin-top: 20px;
+    margin-bottom: 20px; }
+    .toolbar #logoBuild img {
+      width: 100%; }
+  .toolbar .grab {
+    cursor: -webkit-grab !important;
+    cursor: grab !important; }
+  .toolbar .object {
+    width: 90px;
+    height: 65px;
+    padding: 6px; }
+  .toolbar #colors {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+    height: 650px;
+    padding: 6px; }
+    .toolbar #colors #one {
+      background-color: #6EBE44;
+      width: 90px;
+      height: 75px;
+      margin: 3px; }
+    .toolbar #colors #two {
+      background-color: #A5CE46;
+      width: 90px;
+      height: 75px;
+      margin: 3px; }
+    .toolbar #colors #three {
+      background-color: #F7EE60;
+      width: 90px;
+      height: 75px;
+      margin: 3px; }
+    .toolbar #colors #four {
+      background-color: #009050;
+      width: 90px;
+      height: 75px;
+      margin: 3px; }
+    .toolbar #colors #five {
+      background-color: #908F53;
+      width: 90px;
+      height: 75px;
+      margin: 3px; }
+    .toolbar #colors #six {
+      background-color: #F68F5A;
+      width: 90px;
+      height: 75px;
+      margin: 3px; }
+    .toolbar #colors #seven {
+      background-color: #014B50;
+      width: 90px;
+      height: 75px;
+      margin: 3px; }
+    .toolbar #colors #eight {
+      background-color: #914955;
+      width: 90px;
+      height: 75px;
+      margin: 3px; }
+    .toolbar #colors #nine {
+      background-color: #EF4C58;
+      width: 90px;
+      height: 75px;
+      margin: 3px; }
+    .toolbar #colors #ten {
+      background-color: #191750;
+      width: 90px;
+      height: 75px;
+      margin: 3px; }
+    .toolbar #colors #eleven {
+      background-color: #651B57;
+      width: 90px;
+      height: 75px;
+      margin: 3px; }
+    .toolbar #colors #twelve {
+      background-color: #ED1A59;
+      width: 90px;
+      height: 75px;
+      margin: 3px; }
+    .toolbar #colors #thirteen {
+      background-color: #2B328F;
+      width: 90px;
+      height: 75px;
+      margin: 3px; }
+    .toolbar #colors #fourteen {
+      background-color: #8E2B90;
+      width: 90px;
+      height: 75px;
+      margin: 3px; }
+    .toolbar #colors #fifteen {
+      background-color: #E63894;
+      width: 90px;
+      height: 75px;
+      margin: 3px; }
+    .toolbar #colors #sixteen {
+      background-color: #066BA9;
+      width: 90px;
+      height: 75px;
+      margin: 3px; }
+    .toolbar #colors #seventeen {
+      background-color: #6D6FAA;
+      width: 90px;
+      height: 75px;
+      margin: 3px; }
+    .toolbar #colors #eighteen {
+      background-color: #EE519C;
+      width: 90px;
+      height: 75px;
+      margin: 3px; }
+    .toolbar #colors #nineteen {
+      background-color: #00AFAB;
+      width: 90px;
+      height: 75px;
+      margin: 3px; }
+    .toolbar #colors #twenty {
+      background-color: #9AB0AD;
+      width: 90px;
+      height: 75px;
+      margin: 3px; }
+    .toolbar #colors #twentyone {
+      background-color: #F9B6A3;
+      width: 90px;
+      height: 75px;
+      margin: 3px; }
+    .toolbar #colors #twentytwo {
+      background-color: #6CC395;
+      width: 90px;
+      height: 75px;
+      margin: 3px; }
+    .toolbar #colors #twentythree {
+      background-color: #A0D299;
+      width: 90px;
+      height: 75px;
+      margin: 3px; }
+    .toolbar #colors #twentyfour {
+      background-color: #F7F3A9;
+      width: 90px;
+      height: 75px;
+      margin: 3px; }
+  .toolbar .buttons {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: space-around;
+        -ms-flex-pack: distribute;
+            justify-content: space-around;
+    position: absolute;
+    bottom: 50px; }
+
+.workspace {
+  width: 700px;
+  height: 700px;
+  background-color: grey;
+  margin-left: 400px;
+  margin-top: 135px;
+  position: absolute;
+  clear: both; }
+
+.instructions {
+  position: absolute;
+  left: 400px;
+  top: 20px; }
+
+#shapes {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-align: baseline;
+  -webkit-align-items: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  margin-left: 17px;
+  margin-top: 30px;
+  height: 650px; }
+
+#smallcube, #smallsphere, #smallpyramid, #smallprism, #smallcone, #smalldodecahedron {
+  width: 40px;
+  padding: 0 15px 0 15px; }
+
+#mediumcube, #mediumsphere, #mediumpyramid, #mediumprism, #mediumcone, #mediumdodecahedron {
+  width: 65px;
+  padding: 0 15px 0 15px; }
+
+#largecube, #largesphere, #largepyramid, #largeprism, #largecone, #largedodecahedron {
+  width: 85px;
+  padding: 0 15px 0 15px; }
+
+/*# sourceMappingURL=style.css.map */

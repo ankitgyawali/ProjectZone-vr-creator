@@ -13,34 +13,11 @@ upload.html -> lets user upload json of the world created and load from that jso
 
 edit.html -> Let user modify that json object before going to preview
 
-index->
-ground
-sky 
 
-light
-camera
+json structure to be stored in service for preview and download 
 
-object-> rotate,translate,transform
-	  look for ng-hammer feature
-	  loading object type how?
-	  file upload/download in angularjs
-	  geometry-mesh-scene interaction
-
-
-
-World JSON:
-
-authorname:
-authoremail:
-scene: 
-	 ground[String] (texture/color)
-	 ceiling[String] (texture/color)
-	 type[Object]  (room/openworld)
-	 	if(room) -> wall (texture/color)
-	 		(if all wall) -> all wall texture color
-	 		else -> wall 1,2,3,4
-	 object[Array]
-	 	object (texture/color) [String]
-	 	object position [Array of Numbers]
-	 	object animation properties [Object???]
-	 cameraPosition [Object] (optional)
+->
+ 
+ canvasservice -> 
+ 		init to three js scene
+ 		 hold default stored in json array  
