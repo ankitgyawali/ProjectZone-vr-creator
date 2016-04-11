@@ -272,13 +272,13 @@
                 
                 
                 <script>
-                     $("#colors").hide();
-                     $("#light").hide();
-                     
                      $("#shapeButton").click(function () {
                          $("#colors").hide();
                          $("#light").hide();
                          $("#shapes").show();
+                         $("#colorInstruct").hide();
+                         $("#lightInstruct").hide();
+                         $("#shapeInstruct").show();
                         // e.stopPropagation();
                      });
                      
@@ -286,6 +286,9 @@
                          $("#shapes").hide();
                          $("#light").hide();
                          $("#colors").show();
+                         $("#shapeInstruct").hide();
+                         $("#lightInstruct").hide();
+                         $("#colorInstruct").show();
                          
                         // e.stopPropagation();
                     });
@@ -294,6 +297,9 @@
                         $("#shapes").hide();
                         $("#colors").hide();
                         $("#light").show();
+                        $("#shapeInstruct").hide();
+                         $("#colorInstruct").hide();
+                         $("#lightInstruct").show();
                         //e.stopPropagation();
                     }); 
                 </script>
@@ -325,9 +331,10 @@
                 </script>
                 
             </div>
-            
-<!--
-            <div class="instructions">
+        
+        </div>
+        
+        <div class="instructions">
             
                 <div class="miscInstruct" id="shapeInstruct">
                 </div>
@@ -339,9 +346,6 @@
                 </div>
                 
             </div>
--->
-        
-        </div>
         
     </div>
 

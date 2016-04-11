@@ -188,6 +188,12 @@ body .viewport a:active {
   cursor: -webkit-grab !important;
   cursor: grab !important;
 }
+.toolbar #colors {
+  display: none;
+}
+.toolbar #light {
+  display: none;
+}
 .toolbar .object {
   height: 50px;
 }
@@ -332,7 +338,7 @@ body .viewport a:active {
   background-color: #353634;
   position: relative;
   width: 100%;
-  height: 1000px;
+  height: 103vh;
 }
 
 .instructions {
@@ -351,6 +357,30 @@ body .viewport a:active {
   margin-top: 35px;
   position: absolute;
   clear: both;
+}
+
+.instructions {
+  margin-left: 675px;
+  width: 25vw;
+  height: 100vh;
+  background-color: black;
+}
+.instructions .miscInstruct {
+  width: 80%;
+  height: 200px;
+  margin: auto;
+  margin-top: 30px;
+}
+.instructions #shapeInstruct {
+  background-color: lawngreen;
+}
+.instructions #colorInstruct {
+  display: none;
+  background-color: indianred;
+}
+.instructions #lightInstruct {
+  display: none;
+  background-color: cornflowerblue;
 }
 
 /*# sourceMappingURL=style.css.map */
