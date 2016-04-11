@@ -49,17 +49,21 @@ table {
     
 //_____________________________________
 
+//color variables!
 $blue: #67CCEB;
 $red: #EC5B3C;
 $green: #56C1AB;
+$grey: #353634;
+$white: #FFFDF1;
 
+//general styling_____________________
 body {
-    background-color: #353634; 
+    background-color: black; 
 
     .viewport { 
         width: 100%;
         margin: auto;
-        color: #FFFDF1;
+        color: $white;
         font-family: futura, sans-serif;
         line-height: 1.5;
         letter-spacing: 1px;
@@ -67,41 +71,75 @@ body {
         h1 {
             font-size: 30px;
             line-height: 1;
+            letter-spacing: 10px;
+            
+            @media (max-width: 425px) {
+                font-size: 20px;
+                line-height: 1.5;
+            }
         }
         
         p {
-            font-size: 20px;
+            font-size: 16px;
         }
-    }
-}
-
-#logo {
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-
-#welcome {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-    
-    .intro {
-        width: 100%;
-    }
-    
-    #slideshow {
         
-        img {
-            width: 100%;
-        } 
+        a:link { color: $white; text-decoration: none; }
+        a:visited { color: $white; text-decoration: none; }
+        a:hover { color: $white; text-decoration: none; }
+        a:active { color: $white; text-decoration: none; }
+        
     }
-    
-    #intro {
-        padding: 0px 20px 0px 20px;
-    }
-    
 }
 
+//intro page___________________________
+#welcome {
+    width: 65%;
+    padding-top: 30px;
+    margin: auto;
+}
+
+#intro {
+    width: 65%;
+    margin: auto;
+    margin-top: -50px;
+    
+     h1, p{
+        text-align: center;
+    }
+    
+    #introText {
+        margin-top: 75px;
+        background-color: $grey;
+        padding: 30px;
+    }
+    
+    #introButtons {
+        display: flex;
+        justify-content: space-around;
+            
+        .introButton {
+            width: 30%;
+            min-width: 200px;
+            height: 4em;
+            position: relative;
+            margin: auto;
+            margin-top: 80px;
+
+            h1 {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+                height: 2em;
+                align-items: center;
+            }
+        }
+        
+        #learn { background-color: $red; }
+        #build { background-color: $blue; }
+    }
+}
+
+//rooms page___________________________
 #rooms {
     width: 100%;
     display: flex;
@@ -111,163 +149,180 @@ body {
         width: 30%;
         background-color: aqua;
         height: 400px;
-    }
-    
+    } 
 }
 
+//build page___________________________
 .toolbar {
-    
-    a:link {text-decoration: none; color: black; }
-    a:visited {text-decoration: none; color: black;}
-    a:hover {text-decoration: none; color: black;}
-    a:active {text-decoration: none; color: black;}
     width: 330px;
     height: 100vh;
     position: fixed;
     background-color: black;
     display: block;
+    z-index: 100;
     
-    #logoBuild {
+    
+    #logo {
         width: 90%;
-        margin-top: 20px;
+        margin-top: 10px;
         margin-bottom: 20px;
-        
-        img {
-            width: 100%;
-        }
+        margin-left: auto;
+        margin-right: auto;
     }
-    
-//    .dragable {
-//        width: 100%;
-//        display: flex;
-//        justify-content: center;
-//        flex-wrap: wrap;
-//
-//    
-//    }
     
     .grab {
         cursor: grab !important;   
     }
 
     .object {
-        width: 90px;
-        height: 65px;
-        padding: 6px;  
-   
-    }
-
-
-    #colors{
-        display: flex;
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-        height: 650px;
-        padding: 6px;
-//        display: none;
-    
-        #one { background-color: #6EBE44; width: 90px; height: 75px; margin: 3px; }
-        #two { background-color: #A5CE46; width: 90px; height: 75px; margin: 3px; }
-        #three { background-color: #F7EE60; width: 90px; height: 75px; margin: 3px; }
-        #four { background-color: #009050;  width: 90px; height: 75px; margin: 3px; }
-        #five { background-color: #908F53; width: 90px; height: 75px; margin: 3px; }
-        #six { background-color: #F68F5A; width: 90px; height: 75px; margin: 3px; }
-        #seven { background-color: #014B50; width: 90px; height: 75px; margin: 3px; }
-        #eight { background-color: #914955; width: 90px; height: 75px; margin: 3px; }
-        #nine { background-color: #EF4C58; width: 90px; height: 75px; margin: 3px; }
-        #ten { background-color: #191750; width: 90px; height: 75px; margin: 3px; }
-        #eleven { background-color: #651B57; width: 90px; height: 75px; margin: 3px; }
-        #twelve { background-color: #ED1A59; width: 90px; height: 75px; margin: 3px; }
-        #thirteen { background-color: #2B328F; width: 90px; height: 75px; margin: 3px; }
-        #fourteen { background-color: #8E2B90; width: 90px; height: 75px; margin: 3px; }
-        #fifteen { background-color: #E63894; width: 90px; height: 75px; margin: 3px; }
-        #sixteen { background-color: #066BA9; width: 90px; height: 75px; margin: 3px; }
-        #seventeen { background-color: #6D6FAA; width: 90px; height: 75px; margin: 3px; }
-        #eighteen { background-color: #EE519C; width: 90px; height: 75px; margin: 3px; }
-        #nineteen { background-color: #00AFAB; width: 90px; height: 75px; margin: 3px; }
-        #twenty { background-color: #9AB0AD; width: 90px; height: 75px; margin: 3px; }
-        #twentyone { background-color: #F9B6A3; width: 90px; height: 75px; margin: 3px; }
-        #twentytwo { background-color: #6CC395; width: 90px; height: 75px; margin: 3px; }
-        #twentythree { background-color: #A0D299; width: 90px; height: 75px; margin: 3px; }
-        #twentyfour { background-color: #F7F3A9; width: 90px; height: 75px; margin: 3px; }
+        height: 50px;
     }
     
     .buttons {
         display: flex;
         justify-content: space-around;
         position: absolute;
-        bottom: 50px;
+        width: 330px;
+        bottom: 0px;
+        height: 4em;
+        
+        h2 {
+            font-family: futura, helvetica;
+            color: $white;
+            padding: 10px;
+            text-align: center;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            height: 2em;
+            align-items: center;
+        }
     }
+    
+    .button {
+        width: 33.3%;
+    }
+    
+    #shapeButton { background-color: $red; }
+    #shapeButton:hover { background-color: #F8AEA2; transition: .5s; }
+    
+    #colorButton { background-color: $blue; }
+    #colorButton:hover { background-color: #C1E7F3; transition: .5s; }
+    
+    #lightButton { background-color: $green; }
+    #lightButton:hover { background-color: #A2D9D4; transition: .5s; }
     
 }
 
 
-.workspace {
-//    position: absolute;
-    width: 700px;
-    height: 700px;
-    background-color: grey;
-    margin-left: 400px;
-    margin-top: 135px;
-    position: absolute;
-    clear: both;
+
+
+
+#shapes{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: baseline;
+    margin-top: -15px;  
+}
+    
+#smallcube, #smallsphere, #smallpyramid, #smallprism, #smallcone, #smalldodecahedron {
+    width: 35px; padding: 0 18px 0 18px;
+}
+    
+    
+#mediumcube, #mediumsphere, #mediumpyramid, #mediumprism, #mediumcone, #mediumdodecahedron {
+    width: 60px;  padding: 0 18px 0 18px;
+}
+        
+#largecube, #largesphere, #largepyramid, #largeprism, #largecone, #largedodecahedron {
+    width: 80px;  padding: 0 18px 0 18px;
 }
 
+
+
+
+
+#light {
+    
+    #alllights {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+            
+        #greenlight {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #A0D299;
+            margin: 10px;
+        }
+        
+        #redlight {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #F9B6A3;
+            margin: 10px;
+        }
+        
+        #bluelight {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #00AFAB;
+            margin: 10px;
+        }
+        
+          #naturallight {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #F7F3A9;
+            margin: 10px;
+        }
+    }        
+}
+
+#buildViewport {
+    background-color: $grey;
+    position: relative;
+    width: 100%;
+    height: 1000px;
+}
 
 .instructions{
     position: absolute;
     left:400px;
     top:20px;
+    width: 60%;
     
 }
-////page navigation
-//.steps {
-//    width: 100%;
-//   
-//    height: 50px;
+
+.workspace {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background-color: grey;
+    margin-left: 400px;
+    margin-top: 35px;
+    position: absolute;
+    clear: both;
+}
+
+//.instructions {
+//    width: 2000px;
+//    height: 1000px;
+//    background-color: aqua;
+//
+//    .miscInstruct {
 //    
-//    .next {
-//        clear: both;
-//        width: 100px;
-//        height: 50px;
-//        background-color: $blue;
-//        float: right;
 //    }
 //    
-//    .previous {
-//        clear: both;
-//        width: 100px;
-//        height: 50px;
-//        background-color: $blue;
-//        float: left;
-//    }
 //}
-//    
 
 
 
-    #shapes{
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        align-items: baseline;
-        margin-left: 17px;
-        margin-top: 30px;
-        height: 650px;
-        
-    }
     
-    #smallcube, #smallsphere, #smallpyramid, #smallprism, #smallcone, #smalldodecahedron {
-        width: 40px; padding: 0 15px 0 15px;
-    }
-    
-    
-    #mediumcube, #mediumsphere, #mediumpyramid, #mediumprism, #mediumcone, #mediumdodecahedron {
-        width: 65px;  padding: 0 15px 0 15px;
-     }
         
-  #largecube, #largesphere, #largepyramid, #largeprism, #largecone, #largedodecahedron {
-        width: 85px;  padding: 0 15px 0 15px;
-     }
-        
+

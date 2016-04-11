@@ -1,0 +1,352 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Zone</title>
+   
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width"> 
+   
+    <script>
+        $(document).ready( function() {
+            //alert('hover');
+            
+
+            
+            
+            $('.object').click(function() {
+                var whichCategory = $(this).parent();
+                var copy=$(this).clone();
+    //            $(this).css("position","absolute");
+    //            $(this).css("z-index","100");
+
+                copy.css("position" , "absolute");
+                copy.addClass('draggable');
+                copy.addClass('grab');
+                $('.workspace').append(copy);
+                $('.draggable').draggable({containment: ".workspace", scroll: false });
+
+                $(".grab").on("dblclick", function(){
+                    $(this).remove();
+                });
+                
+                 $(".grab svg circle").on("click", function(){
+                   // alert("click");
+                   $(this).attr('style', _currentFill); 
+                });
+
+                 $(".grab svg path").on("click", function(){
+                   // alert("click");
+                   $(this).attr('style', _currentFill); 
+                });
+ 
+                $(".grab svg polygon").on("click", function(){
+                   // alert("click");
+                   $(this).attr('style', _currentFill); 
+                });
+                
+                $(".grab svg rect").on("click", function(){
+                   // alert("click");
+                   $(this).attr('style', _currentFill); 
+                });
+                
+                $(".grab svg polygon").on("click", function(){
+                   // alert("click");
+                   $(this).attr('style', _currentFill); 
+                });
+                
+                
+            });
+        });        
+    </script>
+   
+</head>
+
+<body>
+    
+    <div class="viewport">
+    
+        <div class="toolbar">
+            
+            <div id="logo">
+                <a href="index.html"><img src="images/LOGO.svg"></a>
+            </div>
+            
+            <div id="shapes">
+                
+                <div class="object" id="smallcube" >
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 600 600" enable-background="new 0 0 600 600" xml:space="preserve">
+                        <rect fill="#FFFEF5" width="600" height="600"/>
+                    </svg>
+                </div>
+                
+                <div class="object" id="mediumcube">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 600 600" enable-background="new 0 0 600 600" xml:space="preserve">
+                        <rect fill="#FFFEF5" width="600" height="600"/>
+                    </svg>
+                </div>
+                
+                <div class="object" id="largecube">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 600 600" enable-background="new 0 0 600 600" xml:space="preserve">
+                        <rect fill="#FFFEF5" width="600" height="600"/>
+                    </svg>
+                </div>
+                
+                <div class="object" id="smallsphere">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 600 600" enable-background="new 0 0 600 600" xml:space="preserve">
+                        <circle fill="#FFFEF5" cx="300" cy="300" r="300"/>
+                    </svg>
+                </div>
+                
+                <div class="object" id="mediumsphere">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 600 600" enable-background="new 0 0 600 600" xml:space="preserve">
+                        <circle fill="#FFFEF5" cx="300" cy="300" r="300"/>
+                    </svg>
+                </div>
+                
+                <div class="object" id="largesphere">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 600 600" enable-background="new 0 0 600 600" xml:space="preserve">
+                        <circle fill="#FFFEF5" cx="300" cy="300" r="300"/>
+                    </svg>
+                </div>
+                
+                <div class="object" id="smallpyramid">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 600 600" enable-background="new 0 0 600 600" xml:space="preserve">
+                        <polygon fill="#FFFEF5" points="3.9,550.4 300,37.6 596.1,550.4 "/>
+                    </svg>
+                </div>
+                
+                <div class="object" id="mediumpyramid">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 600 600" enable-background="new 0 0 600 600" xml:space="preserve">
+                        <polygon fill="#FFFEF5" points="3.9,550.4 300,37.6 596.1,550.4 "/>
+                    </svg>
+                </div>
+                
+                <div class="object" id="largepyramid">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 600 600" enable-background="new 0 0 600 600" xml:space="preserve">
+                        <polygon fill="#FFFEF5" points="3.9,550.4 300,37.6 596.1,550.4 "/>
+                    </svg>
+                </div>
+                
+                <div class="object" id="smallprism">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 600 600" enable-background="new 0 0 600 600" xml:space="preserve">
+                        <rect x="147.8" fill="#FFFEF5" width="304.5" height="600"/>
+                    </svg>
+                </div>
+                
+                <div class="object" id="mediumprism">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 600 600" enable-background="new 0 0 600 600" xml:space="preserve">
+                        <rect x="147.8" fill="#FFFEF5" width="304.5" height="600"/>
+                    </svg>
+                </div>
+                
+                <div class="object" id="largeprism">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 600 600" enable-background="new 0 0 600 600" xml:space="preserve">
+                        <rect x="147.8" fill="#FFFEF5" width="304.5" height="600"/>
+                    </svg>
+                </div>
+                
+                <div class="object" id="smallcone">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 600 600" enable-background="new 0 0 600 600" xml:space="preserve">
+                        <path fill="#FFFEF5" d="M585.3,505.3L299.1,9.1L12.8,505.3c0,47.1,129,85.7,287.2,85.7s287.2-38.6,287.2-85.7H585.3z"/>
+                    </svg>
+                </div>
+                
+                <div class="object" id="mediumcone">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 600 600" enable-background="new 0 0 600 600" xml:space="preserve">
+                        <path fill="#FFFEF5" d="M585.3,505.3L299.1,9.1L12.8,505.3c0,47.1,129,85.7,287.2,85.7s287.2-38.6,287.2-85.7H585.3z"/>
+                    </svg>
+                </div>
+                
+                <div class="object" id="largecone">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 600 600" style="enable-background":new 0 0 600 600; xml:space="preserve">
+                        <path fill="#FFFEF5" d="M585.3,505.3L299.1,9.1L12.8,505.3c0,47.1,129,85.7,287.2,85.7s287.2-38.6,287.2-85.7H585.3z"/>
+                    </svg>
+                </div>
+                
+                <div class="object" id="smalldodecahedron">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 600 600" enable-background="new 0 0 600 600" xml:space="preserve">
+                        <polygon fill="#FFFEF5" points="114.1,584.1 0,232.9 298.8,15.9 597.5,232.9 483.4,584.1 "/>
+                    </svg>
+                </div>
+                
+                <div class="object" id="mediumdodecahedron">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 600 600" enable-background="new 0 0 600 600" xml:space="preserve">
+                        <polygon fill="#FFFEF5" points="114.1,584.1 0,232.9 298.8,15.9 597.5,232.9 483.4,584.1 "/>
+                    </svg>
+                </div>
+                
+                <div class="object" id="largedodecahedron">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 600 600" enable-background="new 0 0 600 600" xml:space="preserve">
+                        <polygon fill="#FFFEF5" points="114.1,584.1 0,232.9 298.8,15.9 597.5,232.9 483.4,584.1 "/>
+                    </svg>
+                </div>
+
+            </div>
+            
+<!--            <div id="colors">-->
+            
+                <svg id="colors" viewBox="-3.5 0 60 100">
+                    
+                    <rect style="fill:#6EBE44" x="0"  y="0" width="16" height="9"/>
+                    
+                    <rect style="fill:#A5CE46" x="18" y="0" width="16" height="9"/>
+                    
+                    <rect style="fill:#F7EE60" x="36"  y="0" width="16" height="9"/>
+                    
+                    <rect style="fill:#009050" x="0"  y="11" width="16" height="9"/>
+                    
+                    <rect style="fill:#908F53" x="18" y="11" width="16" height="9"/>
+                    
+                    <rect style="fill:#F68F5A" x="36"  y="11" width="16" height="9"/>
+                    
+                    <rect style="fill:#014B50" x="0"  y="22" width="16" height="9"/>
+                    
+                    <rect style="fill:#914955" x="18" y="22" width="16" height="9"/>
+                    
+                    <rect style="fill:#EF4C58" x="36"  y="22" width="16" height="9"/>
+                    
+                    <rect style="fill:#191750" x="0"  y="33" width="16" height="9"/>
+                    
+                    <rect style="fill:#651B57" x="18" y="33" width="16" height="9"/>
+                    
+                    <rect style="fill:#ED1A59" x="36"  y="33" width="16" height="9"/>
+                    
+                    <rect style="fill:#2B328F" x="0"  y="44" width="16" height="9"/>
+                    
+                    <rect style="fill:#8E2B90" x="18" y="44" width="16" height="9"/>
+                    
+                    <rect style="fill:#E63894" x="36"  y="44" width="16" height="9"/>
+                    
+                    <rect style="fill:#066BA9" x="0"  y="55" width="16" height="9"/>
+                    
+                    <rect style="fill:#6D6FAA" x="18" y="55" width="16" height="9"/>
+                    
+                    <rect style="fill:#EE519C" x="36"  y="55" width="16" height="9"/>
+                    
+                    <rect style="fill:#00AFAB" x="0"  y="66" width="16" height="9"/>
+                    
+                    <rect style="fill:#9AB0AD" x="18" y="66" width="16" height="9"/>
+                    
+                    <rect style="fill:#F9B6A3" x="36"  y="66" width="16" height="9"/>
+                    
+                    <rect style="fill:#6CC395" x="0"  y="77" width="16" height="9"/>
+                    
+                    <rect style="fill:#A0D299" x="18" y="77" width="16" height="9"/>
+                    
+                    <rect style="fill:#F7F3A9" x="36"  y="77" width="16" height="9"/>
+                    
+                    <rect id="selection" style="stroke:#FFFDF1; stroke-opacity: 1;fill:none" x="0" y="0" width="16" height="9"/>
+                
+                </svg>
+            
+            <div id="light">
+                <div id="alllights">
+                <div id="greenlight"></div>
+                <div id="redlight"></div>
+                <div id="bluelight"></div>
+                <div id="yellowlight"></div>
+                <div id="naturallight"></div>
+            </div>
+            </div>
+            
+            <div class="buttons">
+                
+                <div class="button" id="shapeButton">
+                     <a href="#shapes"><h2>SHAPE</h2></a>
+                </div>
+                
+                <div class="button" id="colorButton">
+                    <a href="#colors"><h2>COLOR</h2></a>
+                </div>
+                
+                <div class="button" id="lightButton">
+                     <a href="#lights"><h2>LIGHT</h2></a>
+                </div>
+                
+                
+                <script>
+                     $("#colors").hide();
+                     $("#light").hide();
+                     
+                     $("#shapeButton").click(function () {
+                         $("#colors").hide();
+                         $("#light").hide();
+                         $("#shapes").show();
+                        // e.stopPropagation();
+                     });
+                     
+                     $("#colorButton").click(function () {
+                         $("#shapes").hide();
+                         $("#light").hide();
+                         $("#colors").show();
+                         
+                        // e.stopPropagation();
+                    });
+                     
+                    $("#lightButton").click(function () {
+                        $("#shapes").hide();
+                        $("#colors").hide();
+                        $("#light").show();
+                        //e.stopPropagation();
+                    }); 
+                </script>
+                
+            </div>
+            
+        </div>
+        
+        <div id="buildViewport">
+        
+            <div class="workspace">
+                
+                <script>
+                    var _currentFill = "fill:#FFFDF1";
+                    $(".object").click(function (event) { $(event.target).attr('style', _currentFill); 
+                    $(event.target).attr('style', "fill:#FFFDF1");
+                                                        })
+                    var $swatches = $("#colors");
+                    $swatches.click(function (event) { 
+                        $swatch = $(event.target);
+                        loc = [parseInt($swatch.attr('x'), 10),
+                               parseInt($swatch.attr('y'), 10)]
+                        $("#selection", $swatches).attr('x', loc[0]);
+                        $("#selection", $swatches).attr('y', loc[1]);
+                        _currentFill = $swatch.attr('style'); ; 
+                        
+                        //alert(_currentFill);
+                    })
+                </script>
+                
+            </div>
+            
+<!--
+            <div class="instructions">
+            
+                <div class="miscInstruct" id="shapeInstruct">
+                </div>
+                
+                <div class="miscInstruct" id="colorInstruct">
+                </div>
+                
+                <div class="miscInstruct" id="lightInstruct">
+                </div>
+                
+            </div>
+-->
+        
+        </div>
+        
+    </div>
+
+</body>
+    
+    
+
+</html>
