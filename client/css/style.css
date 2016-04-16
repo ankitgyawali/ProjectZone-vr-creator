@@ -1,0 +1,395 @@
+/* ank
+*/
+
+.column-left{ float: left; width: 33%; }
+.column-right{ float: right; width: 33%; }
+.column-center{ display: inline-block; width: 33%; }
+
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  background-color: black;
+}
+body .viewport {
+  width: 100%;
+  margin: auto;
+  color: #FFFDF1;
+  font-family: futura, sans-serif;
+  line-height: 1.5;
+  letter-spacing: 1px;
+}
+body .viewport h1 {
+  font-size: 30px;
+  line-height: 1;
+  letter-spacing: 10px;
+}
+@media (max-width: 425px) {
+  body .viewport h1 {
+    font-size: 20px;
+    line-height: 1.5;
+  }
+}
+body .viewport p {
+  font-size: 16px;
+}
+body .viewport a:link {
+  color: #FFFDF1;
+  text-decoration: none;
+}
+body .viewport a:visited {
+  color: #FFFDF1;
+  text-decoration: none;
+}
+body .viewport a:hover {
+  color: #FFFDF1;
+  text-decoration: none;
+}
+body .viewport a:active {
+  color: #FFFDF1;
+  text-decoration: none;
+}
+
+#welcome {
+  width: 65%;
+  padding-top: 30px;
+  margin: auto;
+}
+
+#intro {
+  width: 65%;
+  margin: auto;
+  margin-top: -50px;
+}
+#intro h1, #intro p {
+  text-align: center;
+}
+#intro #introText {
+  margin-top: 75px;
+  background-color: #353634;
+  padding: 30px;
+}
+#intro #introButtons {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+}
+#intro #introButtons .introButton {
+  width: 30%;
+  min-width: 200px;
+  height: 4em;
+  position: relative;
+  margin: auto;
+  margin-top: 80px;
+}
+#intro #introButtons .introButton h1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 20px;
+  height: 2em;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#intro #introButtons #learn {
+  background-color: #EC5B3C;
+}
+#intro #introButtons #build {
+  background-color: #67CCEB;
+}
+
+#rooms {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+}
+#rooms .room {
+  width: 30%;
+  background-color: aqua;
+  height: 400px;
+}
+
+.toolbar {
+  width: 330px;
+  height: 100vh;
+  position: fixed;
+  background-color: black;
+  display: block;
+  z-index: 100;
+}
+.toolbar #logo {
+  width: 90%;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.toolbar .grab {
+  cursor: -webkit-grab !important;
+  cursor: grab !important;
+}
+.toolbar #colors {
+  display: none;
+}
+.toolbar #light {
+  display: none;
+}
+.toolbar .object {
+  height: 50px;
+}
+.toolbar .buttons {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  position: absolute;
+  width: 330px;
+  bottom: 0px;
+  height: 4em;
+}
+.toolbar .buttons h2 {
+  font-family: futura, helvetica;
+  color: #FFFDF1;
+  padding: 10px;
+  text-align: center;
+  margin: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 2em;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.toolbar .button {
+  width: 33.3%;
+}
+.toolbar #shapeButton {
+  background-color: #EC5B3C;
+}
+.toolbar #shapeButton:hover {
+  background-color: #F8AEA2;
+  -webkit-transition: .5s;
+          transition: .5s;
+}
+.toolbar #colorButton {
+  background-color: #67CCEB;
+}
+.toolbar #colorButton:hover {
+  background-color: #C1E7F3;
+  -webkit-transition: .5s;
+          transition: .5s;
+}
+.toolbar #lightButton {
+  background-color: #56C1AB;
+}
+.toolbar #lightButton:hover {
+  background-color: #A2D9D4;
+  -webkit-transition: .5s;
+          transition: .5s;
+}
+
+#shapes {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-align: baseline;
+  -webkit-align-items: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  margin-top: -15px;
+}
+
+#smallcube, #smallsphere, #smallpyramid, #smallprism, #smallcone, #smalldodecahedron {
+  width: 35px;
+  padding: 0 18px 0 18px;
+}
+
+#mediumcube, #mediumsphere, #mediumpyramid, #mediumprism, #mediumcone, #mediumdodecahedron {
+  width: 60px;
+  padding: 0 18px 0 18px;
+}
+
+#largecube, #largesphere, #largepyramid, #largeprism, #largecone, #largedodecahedron {
+  width: 80px;
+  padding: 0 18px 0 18px;
+}
+
+#light #alllights {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+#light #alllights #greenlight {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #A0D299;
+  margin: 10px;
+}
+#light #alllights #redlight {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #F9B6A3;
+  margin: 10px;
+}
+#light #alllights #bluelight {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #00AFAB;
+  margin: 10px;
+}
+#light #alllights #naturallight {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #F7F3A9;
+  margin: 10px;
+}
+
+#buildViewport {
+  background-color: #353634;
+  position: relative;
+  width: 100%;
+  height: 103vh;
+}
+
+.instructions {
+  position: absolute;
+  left: 400px;
+  top: 20px;
+  width: 60%;
+}
+
+.workspace {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background-color: grey;
+  margin-left: 400px;
+  margin-top: 35px;
+  position: absolute;
+  clear: both;
+}
+
+.instructions {
+  margin-left: 675px;
+  width: 25vw;
+  height: 100vh;
+  background-color: black;
+}
+.instructions .miscInstruct {
+  width: 80%;
+  height: 200px;
+  margin: auto;
+  margin-top: 30px;
+}
+.instructions #shapeInstruct {
+  background-color: lawngreen;
+}
+.instructions #colorInstruct {
+  display: none;
+  background-color: indianred;
+}
+.instructions #lightInstruct {
+  display: none;
+  background-color: cornflowerblue;
+}
+
+/*# sourceMappingURL=style.css.map */

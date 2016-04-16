@@ -3,8 +3,7 @@
    Submitted to: Dr. Parson
    First Created: 3/3/2016
    Last Modified: 3/3/201
-   Description: assign1.js sets up Three JS scene,  adds three dealy objects and moves it around the canvas along x,y,z axis.
-                        Also listens for keypress 'f' & 'd' to listen to freeze and show demo dealy. Demo dealy leaves a sphere in the canvas.
+   Description: assign3textures.js.js sets textures to assign 1 dealies.
 */
 
 //Set up new ThreeJS Scene

@@ -12,6 +12,15 @@ vrApp.config(function($routeProvider) {
             templateUrl: 'partials/main.html',
             controller: 'editorController'
         })
+          .when('/learn', {
+            templateUrl: 'partials/learn.html',
+            controller: 'learnController'
+        })
+           .when('/build', {
+            templateUrl: 'partials/build.html',
+            controller: 'buildController'
+        })
+
         .when('/save', {
             templateUrl: 'partials/save.html',
             controller: 'saveController'

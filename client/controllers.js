@@ -10,9 +10,129 @@ angular.module('vrApp').controller('mainController', ['$scope', '$location',
         $scope.worldJSON = value;
       }
 
+      $scope.changeTemplate = function(val){
+       $location.url(val);
+      }
+
 
    }
    ]);
+
+
+//Top level parent controller
+angular.module('vrApp').controller('learnController', ['$scope', '$location',
+    function($scope, $location) {
+   }
+   ]);  
+
+
+//Top level parent controller
+angular.module('vrApp').controller('buildController', ['$scope', '$location',
+    function($scope, $location) {
+
+   $(document).ready( function() {
+            //alert('hover');
+            
+
+            
+            
+            $('.object').click(function() {
+                var whichCategory = $(this).parent();
+                var copy=$(this).clone();
+    //            $(this).css("position","absolute");
+    //            $(this).css("z-index","100");
+
+                copy.css("position" , "absolute");
+                copy.addClass('draggable');
+                copy.addClass('grab');
+                $('.workspace').append(copy);
+                $('.draggable').draggable({containment: ".workspace", scroll: false });
+
+                $(".grab").on("dblclick", function(){
+                    $(this).remove();
+                });
+                
+                 $(".grab svg circle").on("click", function(){
+                   // alert("click");
+                   $(this).attr('style', _currentFill); 
+                });
+
+                 $(".grab svg path").on("click", function(){
+                   // alert("click");
+                   $(this).attr('style', _currentFill); 
+                });
+ 
+                $(".grab svg polygon").on("click", function(){
+                   // alert("click");
+                   $(this).attr('style', _currentFill); 
+                });
+                
+                $(".grab svg rect").on("click", function(){
+                   // alert("click");
+                   $(this).attr('style', _currentFill); 
+                });
+                
+                $(".grab svg polygon").on("click", function(){
+                   // alert("click");
+                   $(this).attr('style', _currentFill); 
+                });
+                
+                
+            });
+        });        
+
+       $("#shapeButton").click(function () {
+                         $("#colors").hide();
+                         $("#light").hide();
+                         $("#shapes").show();
+                         $("#colorInstruct").hide();
+                         $("#lightInstruct").hide();
+                         $("#shapeInstruct").show();
+                        // e.stopPropagation();
+                     });
+                     
+                     $("#colorButton").click(function () {
+                         $("#shapes").hide();
+                         $("#light").hide();
+                         $("#colors").show();
+                         $("#shapeInstruct").hide();
+                         $("#lightInstruct").hide();
+                         $("#colorInstruct").show();
+                         
+                        // e.stopPropagation();
+                    });
+                     
+                    $("#lightButton").click(function () {
+                        $("#shapes").hide();
+                        $("#colors").hide();
+                        $("#light").show();
+                        $("#shapeInstruct").hide();
+                         $("#colorInstruct").hide();
+                         $("#lightInstruct").show();
+                        //e.stopPropagation();
+                    }); 
+
+                        var _currentFill = "fill:#FFFDF1";
+                    $(".object").click(function (event) { $(event.target).attr('style', _currentFill); 
+                    $(event.target).attr('style', "fill:#FFFDF1");
+                                                        })
+                    var $swatches = $("#colors");
+                    $swatches.click(function (event) { 
+                        $swatch = $(event.target);
+                        loc = [parseInt($swatch.attr('x'), 10),
+                               parseInt($swatch.attr('y'), 10)]
+                        $("#selection", $swatches).attr('x', loc[0]);
+                        $("#selection", $swatches).attr('y', loc[1]);
+                        _currentFill = $swatch.attr('style'); ; 
+                        
+                        //alert(_currentFill);
+                    })
+
+                    
+
+
+   }
+   ]);  
 
 
 //Controller for Editor page
