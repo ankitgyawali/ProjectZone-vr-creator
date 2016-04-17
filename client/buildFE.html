@@ -355,6 +355,7 @@ console.log(y);
                 <a style="color:blue" href="index.html#/learn">Back to tutorial</a>
 
                 <button onClick="savetoDB();"> Save to database </button>
+
                 <br><br>
 
                 Pick room light color: <br><input type='text'  value="#FFFFFF" id="lightpicker" />
@@ -445,16 +446,17 @@ console.log(y);
                     function savetoDB(){
                         var mainJSON = {};
                         
+
                         var workelem = document.getElementsByClassName('workspace');
                         var arr = [].slice.call(workelem);
-                        console.log(arr);
+     
                         if(arr[0].children.length==1){
                             mainJSON.emptyRoom = true;
                         }
                         else{
                             mainJSON.emptyRoom = false;
                             mainJSON.object = [];
-
+                            
                             for(i=1;i<arr[0].children.length;i++){
                                 var newObj = {};
                     
@@ -471,15 +473,10 @@ console.log(y);
                                 }
                                 
                                 newObj.color = arr[0].children[i].firstElementChild.innerHTML.split(":#").pop().substring(0,6);
-                              
-                               
-                      
-                                console.log( $('#wall1').val());
 
                                 newObj.type= arr[0].children[i].id;
                                 
                                 mainJSON.object.push(newObj);
-
 
                             }
                
@@ -493,15 +490,24 @@ console.log(y);
                             mainJSON.wall4 = $('#wall4').val();
                               mainJSON.ceiling = $('#ceiling').val();
                                  mainJSON.floor = $('#floor').val();
-
-                        console.log(JSON.stringify(mainJSON));
-                        // if(arr[0].children[1].style.top){
-                        //     console.log(arr[0].children[1].style.top);
-                        // }
-                        //  else
-                        //  {
-                        //     console.log(0);
-                        //  }
+                                 console.log(JSON.stringify(mainJSON));
+                    $.ajax({
+                    url : "/save",
+                    type: "POST",
+                    data : mainJSON,
+                    success: function(data, textStatus, jqXHR)
+                    {
+                    //console.log(mainJSON);
+                    var QRlocation  = "save.html?worldID=" + data;
+                    window.location.replace(QRlocation);
+                    
+                    },
+                    error: function (jqXHR, textStatus, errorThrown)
+                    {
+                        console.log("An error occured");
+                    }
+                    });
+              
 
                     }
 
