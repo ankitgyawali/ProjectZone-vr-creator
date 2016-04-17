@@ -7,15 +7,21 @@ var db = mongoose.connection;
 
 //Checksheet Schema
 var worldSchema = mongoose.Schema({
-    worldJSON: Object
+    roomobject: Array,
+    roomColor:String,
+    wall1:String,
+    wall2:String,
+    wall3:String,
+    wall4:String,
+    ceiling:String,
+    floor:String
 }, {
     collection: 'world'
 });
 var worldCol = mongoose.model('world', worldSchema);
 
 
-
 //Export schema variables
 module.exports = {
-    world: worldCol,
+    worldCol: worldCol,
 };

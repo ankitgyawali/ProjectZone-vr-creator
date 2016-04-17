@@ -444,7 +444,9 @@ console.log(y);
 
                 <script type="text/javascript">
                     function savetoDB(){
-                        var mainJSON = {};
+                        var mainJSON = {
+                            roomobject: []
+                        };
                         
 
                         var workelem = document.getElementsByClassName('workspace');
@@ -455,28 +457,27 @@ console.log(y);
                         }
                         else{
                             mainJSON.emptyRoom = false;
-                            mainJSON.object = [];
-                            
+                     
+                            var x=0;
+                            var y = 0;
                             for(i=1;i<arr[0].children.length;i++){
-                                var newObj = {};
+                                //var newObj = {};
                     
-                                if(!arr[0].children[i].style.top){
-
-                                      newObj.x = 0;
-                                      newObj.y = 0;
-                                }
-                                else
+                                if(arr[0].children[i].style.top)
                                 {
-
-                                newObj.x = parseInt(arr[0].children[i].style.top, 10);
-                                newObj.y = parseInt(arr[0].children[i].style.left, 10);
+                                x = parseInt(arr[0].children[i].style.top, 10);
+                                y = parseInt(arr[0].children[i].style.left, 10);
                                 }
                                 
-                                newObj.color = arr[0].children[i].firstElementChild.innerHTML.split(":#").pop().substring(0,6);
 
-                                newObj.type= arr[0].children[i].id;
                                 
-                                mainJSON.object.push(newObj);
+                                    mainJSON.roomobject.push({
+                                    x: x,
+                                    y: y,
+                                    color: arr[0].children[i].firstElementChild.innerHTML.split(":#").pop().substring(0,6),
+                                    type:arr[0].children[i].id
+                                    });
+
 
                             }
                
@@ -490,11 +491,13 @@ console.log(y);
                             mainJSON.wall4 = $('#wall4').val();
                               mainJSON.ceiling = $('#ceiling').val();
                                  mainJSON.floor = $('#floor').val();
-                                 console.log(JSON.stringify(mainJSON));
+                                
+
                     $.ajax({
                     url : "/save",
                     type: "POST",
-                    data : mainJSON,
+                    data: JSON.stringify(mainJSON),
+                     contentType: "application/json",
                     success: function(data, textStatus, jqXHR)
                     {
                     //console.log(mainJSON);

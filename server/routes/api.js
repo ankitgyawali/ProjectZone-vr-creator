@@ -16,8 +16,44 @@ router.get('/logout', function(req, res) {
 
 //Destroys session variables held on the server side during the app cycle.
 router.post('/save', function(req, res) {
-   console.log("saving world..")
+
+console.log(req.body);
+
+ models.worldCol.collection.insert(req.body, onInsert);
+
+    function onInsert(err, docs) {
+        if (err) {
+        	console.log(err);
+            return res.sendStatus(500);
+        } else {
+        	console.log(docs.insertedIds[0]);
+            return res.json(docs.insertedIds[0]);
+        }
+    }
+
+
+
 });
+
+
+//Destroys session variables held on the server side during the app cycle.
+router.post('/view', function(req, res) {
+
+  models.worldCol.findOne({
+            _id: req.body.worldID
+        }, 
+        function(err, doc) {
+            if (err) {
+                return res.sendStatus(500);
+            }
+            res.send(doc);
+        });
+
+
+
+
+});
+
 
 
 

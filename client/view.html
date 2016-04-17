@@ -14,12 +14,45 @@
             body { margin: 0; }
             canvas { width: 100%; height: 100% }
         </style>
-           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+           <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
     </head>
     <body>
 
+    <script type="text/javascript">
+    var worldToRender = {};
 
+  function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)", "i"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+var id  = {}
+
+id.worldID =  getParameterByName('worldID'); // "lorem"
+
+                    $.ajax({
+                    url : "/view",
+                    type: "POST",
+                    async: false,
+                    data : id,
+                    success: function(data, textStatus, jqXHR)
+                    {
+                      worldToRender = data;
+                    },
+                    error: function (jqXHR, textStatus, errorThrown)
+                    {
+                        //Create your own room here
+                        console.log("An error occured");
+                    }
+                    });
+         
+
+    </script>
 
     <div id="maincanvas" style="width:100%;height:100%"></div>
 
@@ -33,6 +66,9 @@
     
         
         <script>
+
+    console.log(JSON.parse(JSON.stringify(worldToRender)));
+ console.log(worldToRender.roomobject[1].type);
     var camera, scene, renderer; //Initialize vars to create world
     var effect, controls;
     var element, container;
