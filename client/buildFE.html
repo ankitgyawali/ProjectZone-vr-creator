@@ -441,7 +441,27 @@ console.log(y);
                     <option selected>stone.png</option>    
                 </select>
                 <br>
-
+            Room Size: 
+                  <select id="roomsize">
+                    <option>Small</option>    
+                    <option selected>Medium</option>    
+                    <option>Large</option>    
+ 
+                </select>
+                <br>
+                Animate Room:
+                 <select id="animateOrNot">
+                    <option value="false" selected>No</option>    
+                    <option value="true">Yes</option>    
+                 </select>
+                <br>
+                Enforce Gravity:
+                        <select id="enforceGravity">
+                    <option value="true" selected>Yes</option>    
+                    <option value="false">No</option>    
+                 </select>
+ 
+                <br>
                 <script type="text/javascript">
                     function savetoDB(){
                         var mainJSON = {
@@ -491,7 +511,9 @@ console.log(y);
                             mainJSON.wall4 = $('#wall4').val();
                               mainJSON.ceiling = $('#ceiling').val();
                                  mainJSON.floor = $('#floor').val();
-                                
+                                 mainJSON.roomSize = $('#roomsize').val();
+                                      mainJSON.animateOrNot = $('#animateOrNot').val();
+                                    mainJSON.enforceGravity = $('#enforceGravity').val();
 
                     $.ajax({
                     url : "/save",

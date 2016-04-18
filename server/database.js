@@ -14,7 +14,11 @@ var worldSchema = mongoose.Schema({
     wall3:String,
     wall4:String,
     ceiling:String,
-    floor:String
+    floor:String,
+    roomSize:String,
+    animateOrNot:String,
+    emptyRoom:Boolean,
+    enforceGravity: String
 }, {
     collection: 'world'
 });

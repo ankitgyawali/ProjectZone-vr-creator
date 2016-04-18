@@ -1,5 +1,4 @@
 <html>
-
     <head>
     <meta name="description" content="Google VR Creator">
     <meta name="keywords" content="Google VR, Virtual Reality,VR,vr,google cardboard,VR creator,create vr">
@@ -62,13 +61,13 @@ id.worldID =  getParameterByName('worldID'); // "lorem"
         <script src="js/StereoEffect.js"></script> <!-- Library to split images into two for 3d effect  -->
         <script src="js/DeviceOrientationControls.js"></script><!-- Get control with cell phone device orientation -->
         <script src="js/OrbitControls.js"></script><!-- Get control with mouse for users from pc -->
-        
-    
+        <script src="js/viewRoom.js"></script><!-- Get control with mouse for users from pc -->
+
         
         <script>
 
     console.log(JSON.parse(JSON.stringify(worldToRender)));
- console.log(worldToRender.roomobject[1].type);
+
     var camera, scene, renderer; //Initialize vars to create world
     var effect, controls;
     var element, container;
@@ -84,71 +83,143 @@ id.worldID =  getParameterByName('worldID'); // "lorem"
       element = renderer.domElement;
       container = document.getElementById('maincanvas');
       container.appendChild(element);
-    /*  
- // left wall
-    geo = new THREE.PlaneGeometry(50,20);
-    var wallleft = new THREE.Mesh(geo ,new THREE.MeshBasicMaterial({color : 0xcccc00}));
-    wallleft.material.side = THREE.DoubleSide;
-    wallleft.rotation.y = Math.PI/2;
-    wallleft.position.x = -5;
-    wallleft.position.z = 50;
-    scene.add(wallleft);
-    */
-    
+
+    //Geometry wall Size
+    var geometryLateral = new THREE.BoxGeometry(0.2, mainRoomSize*2*roomScale, mainRoomSize*roomScale*2);
+
+    //Start Wall 1 
     
      // Debug: This is dynamic
-      var texture = THREE.ImageUtils.loadTexture(
-        'textures/ground/brick.png'
-      );
+      var w1texture = THREE.ImageUtils.loadTexture("textures/ground/" + worldToRender.wall1);
 
       //Texture is repeated from 4x times. (50/50 horizonatal vertical)
       //Can be changed to 1x by 100,100
-      texture.wrapS = THREE.RepeatWrapping;
-      texture.wrapT = THREE.RepeatWrapping;
-
-      texture.anisotropy = renderer.getMaxAnisotropy();
+      w1texture.wrapS = THREE.RepeatWrapping;
+      w1texture.wrapT = THREE.RepeatWrapping;
+      w1texture.anisotropy = renderer.getMaxAnisotropy();
 
       //Instantiate material object with mapped to texture
-      var material = new THREE.MeshPhongMaterial({
+      var w1material = new THREE.MeshPhongMaterial({
         color: 0xffffff,
         specular: 0xffffff,
         shininess: 20,
         shading: THREE.FlatShading,
-        map: texture
+        map: w1texture
       });
 
 
             
-var geometryLateral = new THREE.BoxGeometry(0.2, 75, 100);
-var wall1 = new THREE.Mesh(geometryLateral, material);
+
+
+var wall1 = new THREE.Mesh(geometryLateral, w1material);
 scene.add(wall1);
-wall1.position.x=-50;
-var wall2 = new THREE.Mesh(geometryLateral, material);
+
+wall1.position.x=-mainRoomSize*roomScale;
+
+//Start Wall 2
+
+// Debug: This is dynamic
+var w2texture = THREE.ImageUtils.loadTexture("textures/ground/" + worldToRender.wall2);
+
+//Texture is repeated from 4x times. (50/50 horizonatal vertical)
+//Can be changed to 1x by 100,100
+w2texture.wrapS = THREE.RepeatWrapping;
+w2texture.wrapT = THREE.RepeatWrapping;
+w2texture.anisotropy = renderer.getMaxAnisotropy();
+
+//Instantiate material object with mapped to texture
+var w2material = new THREE.MeshPhongMaterial({
+color: 0xffffff,
+specular: 0xffffff,
+shininess: 20,
+shading: THREE.FlatShading,
+map: w2texture
+});
+
+var wall2 = new THREE.Mesh(geometryLateral, w2material);
 scene.add(wall2);
-wall2.position.x=50;
+wall2.position.x=mainRoomSize*roomScale;
+
+//Start wall 3
+
+var w3texture = THREE.ImageUtils.loadTexture("textures/ground/" + worldToRender.wall3);
+
+//Texture is repeated from 4x times. (50/50 horizonatal vertical)
+//Can be changed to 1x by 100,100
+w3texture.wrapS = THREE.RepeatWrapping;
+w3texture.wrapT = THREE.RepeatWrapping;
+w3texture.anisotropy = renderer.getMaxAnisotropy();
+
+//Instantiate material object with mapped to texture
+var w3material = new THREE.MeshPhongMaterial({
+color: 0xffffff,
+specular: 0xffffff,
+shininess: 20,
+shading: THREE.FlatShading,
+map: w3texture
+});
 
 
-
-var wall3 = new THREE.Mesh(geometryLateral, material);
+var wall3 = new THREE.Mesh(geometryLateral, w3material);
 wall3.rotation.y = Math.PI / 2;
 scene.add(wall3);
-wall3.position.z=-50;
+wall3.position.z=-mainRoomSize*roomScale;
+
+//Start wall 4
 
 
 
-var wall4 = new THREE.Mesh(geometryLateral, material);
+var w4texture = THREE.ImageUtils.loadTexture("textures/ground/" + worldToRender.wall4);
+
+//Texture is repeated from 4x times. (50/50 horizonatal vertical)
+//Can be changed to 1x by 100,100
+w4texture.wrapS = THREE.RepeatWrapping;
+w4texture.wrapT = THREE.RepeatWrapping;
+w4texture.anisotropy = renderer.getMaxAnisotropy();
+
+//Instantiate material object with mapped to texture
+var w4material = new THREE.MeshPhongMaterial({
+color: 0xffffff,
+specular: 0xffffff,
+shininess: 20,
+shading: THREE.FlatShading,
+map: w4texture
+});
+
+
+
+var wall4 = new THREE.Mesh(geometryLateral, w4material);
 wall4.rotation.y = Math.PI / 2;
 scene.add(wall4);
-wall4.position.z=+50;
+wall4.position.z=+mainRoomSize*roomScale;
+
+//End Walls
+
+//Start ceiling
+
+var ceilingTexture = THREE.ImageUtils.loadTexture("textures/ground/" + worldToRender.ceiling);
+
+//Texture is repeated from 4x times. (50/50 horizonatal vertical)
+//Can be changed to 1x by 100,100
+ceilingTexture.wrapS = THREE.RepeatWrapping;
+ceilingTexture.wrapT = THREE.RepeatWrapping;
+ceilingTexture.anisotropy = renderer.getMaxAnisotropy();
+
+//Instantiate material object with mapped to texture
+var ceilingMaterial = new THREE.MeshPhongMaterial({
+color: 0xffffff,
+specular: 0xffffff,
+shininess: 20,
+shading: THREE.FlatShading,
+map: ceilingTexture
+});
 
 
 
-var material = new THREE.MeshBasicMaterial( { color: 0xFF0000 } );
-
-var ceiling = new THREE.Mesh(geometryLateral, material);
+var ceiling = new THREE.Mesh(geometryLateral, ceilingMaterial);
 ceiling.rotation.y = Math.PI / 2;
 ceiling.rotation.x = Math.PI / 2;
-ceiling.position.y=+50;
+ceiling.position.y=+mainRoomSize*roomScale ;
 scene.add(ceiling);
 
 
@@ -156,21 +227,152 @@ scene.add(ceiling);
 
 
 //CUBE
-var geometry = new THREE.BoxGeometry( 4, 4, 4 );
+var geometry = new THREE.BoxGeometry( 25, 25, 25);
 var material = new THREE.MeshBasicMaterial( { color: 0x0000ff } );
 var cube = new THREE.Mesh( geometry, material );
-cube.position.set(25,25,25);
-scene.add( cube );
-
-//SPHERE
+cube.position.set(-45,0,45);
 
 
-        
-var geometry = new THREE.SphereGeometry(1, 32, 32);
-var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-var sphere = new THREE.Mesh( geometry, material );
-sphere.position.set(25,5,25);
-scene.add( sphere );
+
+// soo  (0,0)  = (x,0,-z)
+
+//LARgE MAX x & Z  =  410
+// SMALL MAX x & z    ==   45
+//MEDIUM MAX x & z    ==   190
+
+//MAX  y for medium is always   y   = 0 + size of object
+var finalObject = [];
+
+for(i=0;i<worldToRender.roomobject.length;i++)
+{
+
+  if(worldToRender.roomobject[i].type=="smallcube" || worldToRender.roomobject[i].type=="mediumcube" || worldToRender.roomobject[i].type=="largecube")
+  {
+
+    if(worldToRender.roomobject[i].type=="smallcube" ){
+      var geometry = new THREE.BoxGeometry( 15*roomScale, 15*roomScale, 15*roomScale );
+    }
+    else if(worldToRender.roomobject[i].type=="mediumcube")
+    {
+        var geometry = new THREE.BoxGeometry( 25*roomScale, 25*roomScale, 25*roomScale );
+    }else {
+        var geometry = new THREE.BoxGeometry( 35*roomScale, 35*roomScale, 35*roomScale );
+    }
+      var material = new THREE.MeshBasicMaterial( { color: hashCode("0x" + worldToRender.roomobject[i].color)} );
+     
+       finalObject[i] = new THREE.Mesh( geometry, material );
+
+     
+      if(worldToRender.enforceGravity=="true")
+      {
+       finalObject[i].position.set(changeVal(worldToRender.roomSize,worldToRender.roomobject[i].x),0,changeVal(worldToRender.roomSize,worldToRender.roomobject[i].y));
+      }
+      else{   
+        finalObject[i].position.set(changeVal(worldToRender.roomSize,worldToRender.roomobject[i].x),getRandomArbitrary(worldToRender.roomSize),changeVal(worldToRender.roomSize,worldToRender.roomobject[i].y));    
+      }
+
+                scene.add( finalObject[i] );
+
+  }
+  else if(worldToRender.roomobject[i].type=="smallsphere" || worldToRender.roomobject[i].type=="mediumsphere" || worldToRender.roomobject[i].type=="largesphere"){
+
+
+        if(worldToRender.roomobject[i].type=="smallsphere" ){
+     var geometry = new THREE.SphereGeometry( 5*roomScale, 32, 32 );
+    }
+    else if(worldToRender.roomobject[i].type=="mediumsphere")
+    {
+        var geometry = new THREE.SphereGeometry( 10*roomScale, 32, 32 );
+    }else {
+       var geometry = new THREE.SphereGeometry( 20*roomScale, 32, 32 );
+    }
+      var material = new THREE.MeshBasicMaterial( { color: hashCode("0x" + worldToRender.roomobject[i].color)} );
+     
+       finalObject[i] = new THREE.Mesh( geometry, material );
+
+     
+      if(worldToRender.enforceGravity=="true")
+      {
+       finalObject[i].position.set(changeVal(worldToRender.roomSize,worldToRender.roomobject[i].x),20,changeVal(worldToRender.roomSize,worldToRender.roomobject[i].y));
+      }
+      else{   
+        finalObject[i].position.set(changeVal(worldToRender.roomSize,worldToRender.roomobject[i].x),getRandomArbitrary(worldToRender.roomSize),changeVal(worldToRender.roomSize,worldToRender.roomobject[i].y));    
+      }
+
+                scene.add( finalObject[i] );
+
+  }
+  
+
+  else if(worldToRender.roomobject[i].type=="smallpyramid" || worldToRender.roomobject[i].type=="mediumpyramid" || worldToRender.roomobject[i].type=="largepyramid"){
+
+
+
+            if(worldToRender.roomobject[i].type=="smallpyramid" ){
+  var geometry = new THREE.CylinderGeometry(0, 10*roomScale, 10*roomScale, 10*roomScale, true); 
+    }
+    else if(worldToRender.roomobject[i].type=="mediumpyramid")
+    {
+     var geometry = new THREE.CylinderGeometry(0, 20*roomScale, 20*roomScale, 20*roomScale, true); 
+
+    }else {
+        var geometry = new THREE.CylinderGeometry(0, 30*roomScale, 30*roomScale, 30*roomScale, true); 
+    }
+      var material = new THREE.MeshBasicMaterial( { color: hashCode("0x" + worldToRender.roomobject[i].color)} );
+     
+       finalObject[i] = new THREE.Mesh( geometry, material );
+
+     
+      if(worldToRender.enforceGravity=="true")
+      {
+       finalObject[i].position.set(changeVal(worldToRender.roomSize,worldToRender.roomobject[i].x),20,changeVal(worldToRender.roomSize,worldToRender.roomobject[i].y));
+      }
+      else{   
+        finalObject[i].position.set(changeVal(worldToRender.roomSize,worldToRender.roomobject[i].x),getRandomArbitrary(worldToRender.roomSize),changeVal(worldToRender.roomSize,worldToRender.roomobject[i].y));    
+      }
+
+                scene.add( finalObject[i] );
+
+
+  }
+
+    else if(worldToRender.roomobject[i].type=="smallprism" || worldToRender.roomobject[i].type=="mediumprism" || worldToRender.roomobject[i].type=="largeprism"){
+
+       if(worldToRender.roomobject[i].type=="smallprism" ){
+  var geometry = new THREE.TorusKnotGeometry( 10, 3, 100, 16 );
+    }
+    else if(worldToRender.roomobject[i].type=="mediumprism")
+    {
+    var geometry = new THREE.TorusKnotGeometry( 10, 3, 100, 16 );
+
+    }else {
+      var geometry = new THREE.TorusKnotGeometry( 10, 3, 100, 16 );
+    }
+      var material = new THREE.MeshBasicMaterial( { color: hashCode("0x" + worldToRender.roomobject[i].color)} );
+     
+       finalObject[i] = new THREE.Mesh( geometry, material );
+
+     
+      if(worldToRender.enforceGravity=="true")
+      {
+       finalObject[i].position.set(changeVal(worldToRender.roomSize,worldToRender.roomobject[i].x),20,changeVal(worldToRender.roomSize,worldToRender.roomobject[i].y));
+      }
+      else{   
+        finalObject[i].position.set(changeVal(worldToRender.roomSize,worldToRender.roomobject[i].x),getRandomArbitrary(worldToRender.roomSize),changeVal(worldToRender.roomSize,worldToRender.roomobject[i].y));    
+      }
+
+                scene.add( finalObject[i] );
+
+                
+
+    }
+
+
+
+}
+
+     
+       
         
             
             
@@ -210,7 +412,7 @@ effect = new THREE.StereoEffect(renderer); //Stereo effect object created from s
       window.addEventListener('deviceorientation', setOrientationControls, true);
 
 
-    var light = new THREE.AmbientLight( 0xE6E3E3 ); // soft white light
+    var light = new THREE.AmbientLight( worldToRender.roomColor ); // soft white light
     scene.add( light );
 
     
@@ -218,9 +420,8 @@ effect = new THREE.StereoEffect(renderer); //Stereo effect object created from s
       renderer.setClearColorHex( 0x000000, 0.5 );
 
      // Debug: This is dynamic
-      var texture = THREE.ImageUtils.loadTexture(
-        'textures/ground/stone.png'
-      );
+     //This is floor
+      var texture = THREE.ImageUtils.loadTexture("textures/ground/" + worldToRender.floor);
 
       //Texture is repeated from 4x times. (50/50 horizonatal vertical)
       //Can be changed to 1x by 100,100

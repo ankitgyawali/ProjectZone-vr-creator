@@ -1,4 +1,27 @@
-our json structure:
+
+
+//LARgE MAX x & Z  =  410
+// SMALL MAX x & z    ==   45
+//MEDIUM MAX x & z    ==   190
+
+
+//SMALL
+ 0 to 559    =  45 to -45
+
+default vals @ 0,0 top left corner
+equivalent small (     45, -   0, - 45         )
+equivalent medium (     190, -   0, - 190         )
+equivalent large (     410, -   0, - 410         )
+
+
+559 , 529 would be bottom down right
+equivalent small (     -45, -   0,  45         )
+equivalent medium (     190, -   0, - 190         )
+equivalent large (     410, -   0, - 410         )
+
+/ soo  (0,0)  = (x,0,-z)
+
+
 {"emptyRoom":false,"object":[{"x":41,"y":138,"color":"F68F5A","type":"largecube"},{"x":155,"y":270,"color":"F68F5A","type":"largesphere"},{"x":168,"y":116,"color":"EF4C58","type":"largesphere"},{"x":81,"y":397,"color":"191750","type":"largepyramid"},{"x":18,"y":283,"color":"651B57","type":"largecone"},{"x":250,"y":217,"color":"6EBE44","type":"largeprism"},{"x":152,"y":48,"color":"009050","type":"smallprism"}],"roomColor":"#201b1b","wall1":"brick.png","wall2":"black-tile.png","wall3":"black-tile.png","wall4":"black-tile.png","ceiling":"black-tile.png","floor":"stone.png"}
 
 
