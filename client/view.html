@@ -71,7 +71,7 @@ id.worldID =  getParameterByName('worldID'); // "lorem"
     var camera, scene, renderer; //Initialize vars to create world
     var effect, controls;
     var element, container;
-
+    var finalObject = [];
     var clock = new THREE.Clock(); //Debug: Read up on this
 
     init();
@@ -226,11 +226,7 @@ scene.add(ceiling);
 
 
 
-//CUBE
-var geometry = new THREE.BoxGeometry( 25, 25, 25);
-var material = new THREE.MeshBasicMaterial( { color: 0x0000ff } );
-var cube = new THREE.Mesh( geometry, material );
-cube.position.set(-45,0,45);
+
 
 
 
@@ -241,7 +237,7 @@ cube.position.set(-45,0,45);
 //MEDIUM MAX x & z    ==   190
 
 //MAX  y for medium is always   y   = 0 + size of object
-var finalObject = [];
+
 
 for(i=0;i<worldToRender.roomobject.length;i++)
 {
@@ -265,7 +261,7 @@ for(i=0;i<worldToRender.roomobject.length;i++)
      
       if(worldToRender.enforceGravity=="true")
       {
-       finalObject[i].position.set(changeVal(worldToRender.roomSize,worldToRender.roomobject[i].x),0,changeVal(worldToRender.roomSize,worldToRender.roomobject[i].y));
+       finalObject[i].position.set(changeVal(worldToRender.roomSize,worldToRender.roomobject[i].x),1,changeVal(worldToRender.roomSize,worldToRender.roomobject[i].y));
       }
       else{   
         finalObject[i].position.set(changeVal(worldToRender.roomSize,worldToRender.roomobject[i].x),getRandomArbitrary(worldToRender.roomSize),changeVal(worldToRender.roomSize,worldToRender.roomobject[i].y));    
@@ -363,7 +359,7 @@ for(i=0;i<worldToRender.roomobject.length;i++)
 
                 scene.add( finalObject[i] );
 
-                
+
 
     }
 
@@ -476,6 +472,14 @@ effect = new THREE.StereoEffect(renderer); //Stereo effect object created from s
 
     function animate(t) {
       requestAnimationFrame(animate);
+      if(worldToRender.animateOrNot=="true"){
+        for(i=0;i<finalObject.length;i++){
+          finalObject[i].rotation.x += 0.1;
+          finalObject[i].rotation.y += 0.1;
+        }
+      
+      }
+    
 
       update(clock.getDelta());
       render(clock.getDelta());
