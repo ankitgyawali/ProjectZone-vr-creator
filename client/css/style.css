@@ -314,6 +314,11 @@ body .viewport a:active {
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
 }
+
+#light #lightpicker {
+    display: none;
+}
+
 #light #alllights #greenlight {
   width: 100px;
   height: 100px;
@@ -370,26 +375,34 @@ body .viewport a:active {
 
 .instructions {
   margin-left: 675px;
+    margin-top: -20px;
   width: 25vw;
   height: 100vh;
   background-color: black;
 }
 .instructions .miscInstruct {
   width: 80%;
-  height: 200px;
+  height: 350px;
   margin: auto;
   margin-top: 30px;
+    box-sizing: border-box;
+    padding: 15px;
 }
 .instructions #shapeInstruct {
-  background-color: lawngreen;
+  background-color: #ef5a34;
 }
 .instructions #colorInstruct {
   display: none;
-  background-color: indianred;
+  background-color: #65cceb;
 }
 .instructions #lightInstruct {
   display: none;
-  background-color: cornflowerblue;
+  background-color: #54c0ab;
+}
+
+.instructions #ankit {
+    background-color: #363534;
+    height: 270px;
 }
 
 /*# sourceMappingURL=style.css.map */
