@@ -278,11 +278,7 @@ console.log(y);
             
             <div id="light">
                 <div id="alllights">
-                    <div id="greenlight"></div>
-                    <div id="redlight"></div>
-                    <div id="bluelight"></div>
-                    <div id="yellowlight"></div>
-                    <div id="naturallight"></div>
+                    
                 </div>
                 
                 <input type='text'  value="#FFFFFF" id="lightpicker" />
@@ -312,14 +308,21 @@ console.log(y);
                      <a href="#lights"><h2>LIGHT</h2></a>
                 </div>
                 
+                <div class="button" id="wallButton">
+                     <a href="#ankit"><h2>WALLS</h2></a>
+                </div>
+                
                 
                 <script>
+                     $("#ankit").hide();
                      $("#shapeButton").click(function () {
                          $("#colors").hide();
                          $("#light").hide();
+                          $("#ankit").hide();
                          $("#shapes").show();
                          $("#colorInstruct").hide();
                          $("#lightInstruct").hide();
+                          $("#wallInstruct").hide();
                          $("#shapeInstruct").show();
                         // e.stopPropagation();
                      });
@@ -327,9 +330,11 @@ console.log(y);
                      $("#colorButton").click(function () {
                          $("#shapes").hide();
                          $("#light").hide();
+                          $("#ankit").hide();
                          $("#colors").show();
                          $("#shapeInstruct").hide();
                          $("#lightInstruct").hide();
+                           $("#wallInstruct").hide();
                          $("#colorInstruct").show();
                          
                         // e.stopPropagation();
@@ -338,12 +343,28 @@ console.log(y);
                     $("#lightButton").click(function () {
                         $("#shapes").hide();
                         $("#colors").hide();
+                        $("#wankit").hide();
                         $("#light").show();
                         $("#shapeInstruct").hide();
+                          $("#wallInstruct").hide();
                          $("#colorInstruct").hide();
                          $("#lightInstruct").show();
                         //e.stopPropagation();
                     }); 
+                    
+                       $("#wallButton").click(function () {
+                        $("#shapes").hide();
+                        $("#colors").hide();
+                        $("#light").hide();
+                        $("#ankit").show();
+                        $("#shapeInstruct").hide();
+                         $("#colorInstruct").hide();
+                         $("#lightInstruct").hide();
+                             $("#wallInstruct").show();
+                        //e.stopPropagation();
+                    }); 
+                    
+                    
                 </script>
                 
             </div>
@@ -398,11 +419,15 @@ console.log(y);
                 
                 <div class="miscInstruct" id="lightInstruct">
                     <h2>INSTRUCTIONS:</h2><br>
-                     
-
+                    <p>Use the color picker to change the lighting in the zone.</p> 
+                    
                 </div>
             
-            
+               <div class="miscInstruct" id="wallInstruct">
+                    <h2>INSTRUCTIONS:</h2><br>
+                    <p>Go thought the lists and select how you want the walls to look. <br> Then save your zone!</p>
+                    
+                </div>
             
             
             
@@ -578,9 +603,9 @@ console.log(y);
 
                 </script>
                     
-                    <button onClick="savetoDB();"> Save to database </button>
+    <button id ="savebutton" onClick="savetoDB();"> SAVE ZONE! </button>
 
-                    <br><br>
+                  
 
                 
                 </div>

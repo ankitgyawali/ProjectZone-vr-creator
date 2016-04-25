@@ -39,7 +39,7 @@ footer, header, hgroup, menu, nav, section {
 
 body {
   line-height: 1;
-
+box-sizing: border-box;
 }
 
 ol, ul {
@@ -63,6 +63,7 @@ table {
 
 body {
   background-color: black;
+    overflow: hidden;
 }
 body .viewport {
   width: 100%;
@@ -214,13 +215,16 @@ body .viewport a:active {
   -webkit-justify-content: space-around;
       -ms-flex-pack: distribute;
           justify-content: space-around;
+    flex-direction: column;
   position: absolute;
   width: 330px;
   bottom: 0px;
-  height: 4em;
+ 
+    margin-top: 25%;
 }
 .toolbar .buttons h2 {
   font-family: futura, helvetica;
+    font-size: 18px;
   color: #FFFDF1;
   padding: 10px;
   text-align: center;
@@ -240,10 +244,11 @@ body .viewport a:active {
           align-items: center;
 }
 .toolbar .button {
-  width: 33.3%;
+  padding: 5px 0;
 }
 .toolbar #shapeButton {
   background-color: #EC5B3C;
+    width: 100%;
 }
 .toolbar #shapeButton:hover {
   background-color: #F8AEA2;
@@ -251,6 +256,7 @@ body .viewport a:active {
           transition: .5s;
 }
 .toolbar #colorButton {
+     width: 100%;
   background-color: #67CCEB;
 }
 .toolbar #colorButton:hover {
@@ -259,7 +265,18 @@ body .viewport a:active {
           transition: .5s;
 }
 .toolbar #lightButton {
+     width: 100%;
   background-color: #56C1AB;
+}
+.toolbar #lightButton:hover {
+  background-color: #A2D9D4;
+  -webkit-transition: .5s;
+          transition: .5s;
+}
+
+.toolbar #wallButton {
+     width: 100%;
+  background-color: #EC5B3C;
 }
 .toolbar #lightButton:hover {
   background-color: #A2D9D4;
@@ -301,23 +318,13 @@ body .viewport a:active {
   padding: 0 18px 0 18px;
 }
 
-#light #alllights {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-}
 
+
+/*
 #light #lightpicker {
     display: none;
 }
+*/
 
 #light #alllights #greenlight {
   width: 100px;
@@ -391,6 +398,12 @@ body .viewport a:active {
 .instructions #shapeInstruct {
   background-color: #ef5a34;
 }
+
+.instructions #wallInstruct {
+  background-color: #ef5a34;
+    display: none;
+}
+
 .instructions #colorInstruct {
   display: none;
   background-color: #65cceb;
@@ -403,6 +416,31 @@ body .viewport a:active {
 .instructions #ankit {
     background-color: #363534;
     height: 270px;
+    
+}
+#ankit{
+   display: none;
+}
+
+.instructions #ankit #savebutton{
+    font-family: futura;
+    width: 100%;
+    background-color: #ef5a34;
+    font-size: 20px;
+    padding: 30px;
+    color: #FFFDF1;
+    position: absolute;
+    bottom: 0px;
+    margin: auto;
+    right: 0px;
+    border: none;
+}
+
+.instructions #ankit #savebutton:hover{
+ background-color: #C1E7F3;
+  -webkit-transition: .5s;
+          transition: .5s;
+    
 }
 
 /*# sourceMappingURL=style.css.map */
