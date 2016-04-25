@@ -9,7 +9,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
-    <script src="js/jqrcode.min.js"></script>
+    <script src="https://raw.githubusercontent.com/davidshimjs/qrcodejs/master/qrcode.js"></script>
 
 
     <!--[if lt IE 9]>
@@ -35,24 +35,31 @@
       
         <div id="intro">      
         <br><br>
-        <div id="qrDIV" style="align:center"></div>
+        <div id="qrcode" style="align:center;border: 33px solid white;background-color: white;width: 256px;margin-left:35%" ></div>
         <a href=""></a>
         
             <script type="text/javascript">
 
           
-         
-            
-             $("#qrDIV").qrcode(res);
+            var qrcode = new QRCode("qrcode", {
+    text: res,
+    width: 256,
+    height: 256,
+    colorDark : "#000000",
+    colorLight : "#ffffff",
+    correctLevel : QRCode.CorrectLevel.L
+});
+            // new QRCode(document.getElementById("qrcode"), res)
+             //$("#qrDIV").qrcode(res);
     
             </script>
-            <div id="introText">
-          
+            <div id="introText" style="background-color: white;font-size: 115%">
+            
                   
             </div>
  
                 <script type="text/javascript">
-                                document.getElementById("introText").innerHTML = res;          
+                                document.getElementById("introText").innerHTML = "<u><a style='color:blue' href='" + res +"'> "+ res+"</a></u>";          
                 </script>
 
                 <div id="introButtons">
